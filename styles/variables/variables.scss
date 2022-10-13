@@ -1,0 +1,30 @@
+
+/*COLORS*/
+$myColor: crimson;  
+$textColor: #333;
+$whiteAnt: antiquewhite;
+
+/*FONTS*/
+$pFontSize: 1.3rem;
+$fontHeaders: 'Bebas Neue', cursive;
+$fontText: 'DM Sans', sans-serif;
+
+@mixin center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin center-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin section-mix{
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    @include center-column;
+}

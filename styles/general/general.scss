@@ -1,0 +1,19 @@
+@use '../variables/variables.scss' as var;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var.$whiteAnt;
+    color: var.$textColor;
+    font-family: var.$fontText;
+    min-height: 100vh;
+    @include var.center-column;
+}
+
+h1, h2, h3, h4, h5{
+    font-family: var.$fontHeaders;
+}
