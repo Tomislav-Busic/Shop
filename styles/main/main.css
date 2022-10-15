@@ -15,6 +15,16 @@ main section {
   align-items: center;
   justify-content: center;
 }
-main section h3 {
-  text-align: center;
+main section .categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  main {
+    padding: 4rem 1rem;
+  }
 }/*# sourceMappingURL=main.css.map */

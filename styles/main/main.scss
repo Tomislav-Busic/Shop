@@ -7,7 +7,16 @@ main {
     min-height: 100vh;
     section {
     @include var.section-mix;
-        h3{
-            text-align: center;
-        }} 
+        .categories{
+            @include var.center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+    } 
+}
+
+@media (max-width: 1200px){
+    main {
+        padding: 4rem 1rem;
+    }
 }

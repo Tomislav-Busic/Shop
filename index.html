@@ -15,24 +15,54 @@
         <h1>Shop</h1>
 
         <div class="menu">
-            <ul>
+            <ul class="menu-ul">
                 <li><a href="/">Home</a></li>
+                <li class="dropdown">
+                    <button id="categories_btn">Categories</button>
+                    <div class="dropdown-text">
+                        <ul  id="dropdown_id">
+                            
+                        </ul>
+                    </div>
+                </li>
                 <li><a href="#">News</a></li>
             </ul>
         </div>
 
-        <button id="menu_btn">MENU</button>
+        <button class="menu-btn" id="menu_btn">MENU</button>
     </header>
 
     <!-- main -->
     <main>
-        <section><h3>Import</h3></section>
+        <section>
+            
+            <div class="categories" id="categories_id"></div>
+        </section>
     </main>
 
     <!-- footer -->
     <footer>
         <h3 id="footer_copyrights">Copyright &copy;</h3>    
     </footer>
+
+
+
+    <!-- TEMPLATES -->
+
+    <!-- template categories -->
+    <template id="category_template_id">
+        <div class="card">
+            <img src="${image}" alt="${name}">
+            <h1>${name}</h1>
+        </div>
+    </template>
+
+    <!-- template dropdown -->
+    <template id="template_dropdown_id">
+        <li><a href="#">${name}</a></li>
+    </template>
+
+    <script src="script.js"></script>
 
     <script src="script.js"></script>
 </body>

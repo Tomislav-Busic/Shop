@@ -2,6 +2,7 @@
 
 header,
 footer {
+    z-index: 999;
     position: fixed;
     margin: 0;
     padding: 0.3rem 3rem;
@@ -17,7 +18,7 @@ header{
     flex-direction: row;
     justify-content: space-between;
         
-    .menu ul{
+    .menu .menu-ul{
         display: flex;
         flex-direction: row;
         padding-top: 0.3rem;
@@ -36,12 +37,60 @@ header{
 
                 &:hover{
                     color: var.$whiteAnt;
+                } 
+            }
+
+            button{
+                background: none;
+                color: var.$textColor;
+                border: none;
+                font-weight: bolder;
+                font-size: 1.3rem;
+                font-family: var.$fontHeaders;
+                cursor: pointer;
+                transition: 0.5s ease-in-out;
+
+                &:hover{
+                    color: var.$whiteAnt;
+                }
+            }     
+        }
+
+        .dropdown{
+
+            .dropdown-text{
+                position: absolute;
+                top: 2.5rem;
+
+                ul{
+                    @include var.center-column;
+                    width: 10rem;
+
+                    li{
+                        padding: 0.5rem 1rem;
+                        width: 100%;
+                        margin: 0;
+                        background-color: var.$myColor;
+
+                        a {
+                            text-decoration: none;
+                            color: var.$textColor;
+                            font-size: var.$pFontSize;
+                            font-family: var.$fontHeaders;
+                            font-weight: bolder;
+                            transition: 0.5 ease-in-out;
+    
+                            &:hover{
+                                color: var.$whiteAnt;
+                            }
+                        }
+                    }
                 }
             }
         }
     }
 
-    button{
+    .menu-btn{
         display: none;
         background: none;
         color: var.$textColor;
@@ -68,7 +117,7 @@ footer{
 }
 
 
-/*RESPONSIVE*/
+/*RESPONSIVE HEADER AND MENU*/
 
 @media (max-width: 780px){
     header,
@@ -83,12 +132,14 @@ footer{
             font-size: 1.3rem;
         }
 
-        .menu ul{
+        .menu .menu-ul{
             padding: 0;
+            width: 12rem;
             position: absolute;
             flex-direction: column;
             top: 2rem;
             right: -15rem;
+            text-align: center;
             transition: 1s ease-in-out;
 
             li{
@@ -99,10 +150,42 @@ footer{
                a{
                 color: var.$myColor;
                }
+
+               button{
+                color: var.$myColor;
+                margin: 0;
+                padding: 0;
+               }
+            }
+
+            .dropdown{
+    
+                .dropdown-text{
+                    position: absolute;
+                    right: 12rem;
+                    
+                    ul{
+            
+                        li{
+                            padding: 0.5rem 3rem;
+                            margin: 0;
+                            background-color: var.$textColor;
+    
+                            a {
+                                color: var.$myColor;
+                                transition: 0.5 ease-in-out;
+        
+                                &:hover{
+                                    color: var.$whiteAnt;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
-        button{
+        .menu-btn{
             display: block;
         }
     }
