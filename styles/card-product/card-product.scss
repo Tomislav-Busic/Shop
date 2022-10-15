@@ -1,0 +1,50 @@
+@use '../variables/variables.scss' as var;
+
+.card-product {
+    position: relative;
+    margin: 1rem;
+    width: 20rem;
+    height: 15rem;
+    cursor: pointer;
+    overflow: hidden; 
+    
+
+    img{
+        width: 100%;
+        border-radius: 0.5rem;  
+    }
+
+    .card-description{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 0 1rem;
+        width: 100%;
+        color: var.$myColor;
+        background-color: var.$whiteAnt;
+        opacity: 0.8;
+
+        h2, 
+        h5{
+            color: var.$textColor;
+        }
+
+        button{
+            float: right;
+            margin: 0.5rem;
+            background: none;
+            color: var.$textColor;
+            border: none;
+            font-weight: bolder;
+            font-size: 1.3rem;
+            font-family: var.$fontHeaders;
+            cursor: pointer;
+            transition: 0.5s ease-in-out;
+        
+        &:hover{
+            transform: scale(1.2);
+            color: var.$myColor;
+        }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+/*COLORS*/
+/*FONTS*/
+.card-product {
+  position: relative;
+  margin: 1rem;
+  width: 20rem;
+  height: 15rem;
+  cursor: pointer;
+  overflow: hidden;
+}
+.card-product img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.card-product .card-description {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0 1rem;
+  width: 100%;
+  color: crimson;
+  background-color: antiquewhite;
+  opacity: 0.8;
+}
+.card-product .card-description h2,
+.card-product .card-description h5 {
+  color: #333;
+}
+.card-product .card-description button {
+  float: right;
+  margin: 0.5rem;
+  background: none;
+  color: #333;
+  border: none;
+  font-weight: bolder;
+  font-size: 1.3rem;
+  font-family: "Bebas Neue", cursive;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+.card-product .card-description button:hover {
+  transform: scale(1.2);
+  color: crimson;
+}/*# sourceMappingURL=card-product.css.map */

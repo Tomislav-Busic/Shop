@@ -18,12 +18,10 @@
             <ul class="menu-ul">
                 <li><a href="/">Home</a></li>
                 <li class="dropdown">
-                    <button id="categories_btn">Categories</button>
-                    <div class="dropdown-text">
-                        <ul  id="dropdown_id">
-                            
-                        </ul>
-                    </div>
+                    <a href="#">Categories &#9662</a>
+                    <ul class="dropdown-text" id="dropdown_id">
+                        
+                    </ul>
                 </li>
                 <li><a href="#">News</a></li>
             </ul>
@@ -34,10 +32,25 @@
 
     <!-- main -->
     <main>
+
+        <!-- section categories -->
         <section>
             
             <div class="categories" id="categories_id"></div>
         </section>
+
+        <!-- section products -->
+        <section id="products_section">
+
+            <br><br><br>
+
+            <h1 class="heading-products">All Products</h1>
+
+            <br><br><br>
+
+            <div class="products" id="products_id"></div>
+        </section>
+
     </main>
 
     <!-- footer -->
@@ -51,15 +64,27 @@
 
     <!-- template categories -->
     <template id="category_template_id">
-        <div class="card">
+        <a href="#products_section" class="card-category" onclick="choseCategoryByImage(this)">
             <img src="${image}" alt="${name}">
             <h1>${name}</h1>
-        </div>
+        </a>
+    </template>
+
+    <!-- template products -->
+    <template id="products_template_id">
+        <a class="card-product" id="${id}">
+            <img src="${image}" alt="${name}">
+            <div class="card-description">
+                <h2>${name}</h2>
+                <h5>${description}...</h5>
+                <button>See More</button>
+            </div>
+        </a>
     </template>
 
     <!-- template dropdown -->
     <template id="template_dropdown_id">
-        <li><a href="#">${name}</a></li>
+        <li onclick="choseCategory(this)"><a href="#products_section">${name}</a></li>
     </template>
 
     <script src="script.js"></script>

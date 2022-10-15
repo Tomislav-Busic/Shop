@@ -6,8 +6,15 @@ main {
     width: 100%;
     min-height: 100vh;
     section {
-    @include var.section-mix;
-        .categories{
+        @include var.section-mix;
+        padding-bottom: 5rem;
+
+        h1{
+            font-size: 2rem;
+        }
+
+        .categories, 
+        .products{
             @include var.center;
             flex-wrap: wrap;
             width: 100%;

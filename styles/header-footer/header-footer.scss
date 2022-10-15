@@ -24,10 +24,12 @@ header{
         padding-top: 0.3rem;
 
         li{
-            margin: 0 0.5rem;
+            display: inline-block;
             list-style: none;
 
             a{
+                display: block;
+                padding: 0 3rem;
                 text-decoration: none;
                 color: var.$textColor;
                 font-size: var.$pFontSize;
@@ -38,55 +40,47 @@ header{
                 &:hover{
                     color: var.$whiteAnt;
                 } 
+            } 
+            
+            &:hover .dropdown-text{
+                display: block;
             }
 
-            button{
-                background: none;
-                color: var.$textColor;
-                border: none;
-                font-weight: bolder;
-                font-size: 1.3rem;
-                font-family: var.$fontHeaders;
-                cursor: pointer;
-                transition: 0.5s ease-in-out;
-
-                &:hover{
-                    color: var.$whiteAnt;
-                }
-            }     
+            &:hover .dropdown-text li{
+                display: block;
+            }
         }
 
         .dropdown{
-
-            .dropdown-text{
+            display: flex;
+            justify-content: center;
+            
+            ul{
                 position: absolute;
-                top: 2.5rem;
+                padding-top: 2rem;
+                width: 10rem;
+                display: none;
 
-                ul{
-                    @include var.center-column;
-                    width: 10rem;
+                li{
+                    padding: 0.5rem 1rem;
+                    width: 100%;
+                    margin: 0;
+                    background-color: var.$myColor;
+                    a {
+                        padding: 0 1rem;
+                        text-decoration: none;
+                        color: var.$textColor;
+                        font-size: var.$pFontSize;
+                        font-family: var.$fontHeaders;
+                        font-weight: bolder;
+                        transition: 0.5 ease-in-out;
 
-                    li{
-                        padding: 0.5rem 1rem;
-                        width: 100%;
-                        margin: 0;
-                        background-color: var.$myColor;
-
-                        a {
-                            text-decoration: none;
-                            color: var.$textColor;
-                            font-size: var.$pFontSize;
-                            font-family: var.$fontHeaders;
-                            font-weight: bolder;
-                            transition: 0.5 ease-in-out;
-    
-                            &:hover{
-                                color: var.$whiteAnt;
-                            }
+                        &:hover{
+                            color: var.$whiteAnt;
                         }
                     }
                 }
-            }
+            } 
         }
     }
 
@@ -133,6 +127,7 @@ footer{
         }
 
         .menu .menu-ul{
+            margin: 0;
             padding: 0;
             width: 12rem;
             position: absolute;
@@ -148,36 +143,30 @@ footer{
                margin: 0;
                 
                a{
-                color: var.$myColor;
-               }
-
-               button{
-                color: var.$myColor;
-                margin: 0;
                 padding: 0;
+                color: var.$myColor;
                }
             }
 
-            .dropdown{
-    
+            .dropdown{    
+                                       
                 .dropdown-text{
                     position: absolute;
+                    padding: 0;
                     right: 12rem;
-                    
-                    ul{
-            
-                        li{
-                            padding: 0.5rem 3rem;
-                            margin: 0;
-                            background-color: var.$textColor;
+
+                    li{
+                        padding: 0.5rem 0rem;
+                        margin: 0;
+                        background-color: var.$textColor;
+
+                        a {
+                            padding: 0 1rem;
+                            color: var.$myColor;
+                            transition: 0.5 ease-in-out;
     
-                            a {
-                                color: var.$myColor;
-                                transition: 0.5 ease-in-out;
-        
-                                &:hover{
-                                    color: var.$whiteAnt;
-                                }
+                            &:hover{
+                                color: var.$whiteAnt;
                             }
                         }
                     }

@@ -23,10 +23,12 @@ header .menu .menu-ul {
   padding-top: 0.3rem;
 }
 header .menu .menu-ul li {
-  margin: 0 0.5rem;
+  display: inline-block;
   list-style: none;
 }
 header .menu .menu-ul li a {
+  display: block;
+  padding: 0 3rem;
   text-decoration: none;
   color: #333;
   font-size: 1.3rem;
@@ -37,37 +39,30 @@ header .menu .menu-ul li a {
 header .menu .menu-ul li a:hover {
   color: antiquewhite;
 }
-header .menu .menu-ul li button {
-  background: none;
-  color: #333;
-  border: none;
-  font-weight: bolder;
-  font-size: 1.3rem;
-  font-family: "Bebas Neue", cursive;
-  cursor: pointer;
-  transition: 0.5s ease-in-out;
+header .menu .menu-ul li:hover .dropdown-text {
+  display: block;
 }
-header .menu .menu-ul li button:hover {
-  color: antiquewhite;
+header .menu .menu-ul li:hover .dropdown-text li {
+  display: block;
 }
-header .menu .menu-ul .dropdown .dropdown-text {
-  position: absolute;
-  top: 2.5rem;
-}
-header .menu .menu-ul .dropdown .dropdown-text ul {
+header .menu .menu-ul .dropdown {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 10rem;
 }
-header .menu .menu-ul .dropdown .dropdown-text ul li {
+header .menu .menu-ul .dropdown ul {
+  position: absolute;
+  padding-top: 2rem;
+  width: 10rem;
+  display: none;
+}
+header .menu .menu-ul .dropdown ul li {
   padding: 0.5rem 1rem;
   width: 100%;
   margin: 0;
   background-color: crimson;
 }
-header .menu .menu-ul .dropdown .dropdown-text ul li a {
+header .menu .menu-ul .dropdown ul li a {
+  padding: 0 1rem;
   text-decoration: none;
   color: #333;
   font-size: 1.3rem;
@@ -75,7 +70,7 @@ header .menu .menu-ul .dropdown .dropdown-text ul li a {
   font-weight: bolder;
   transition: 0.5 ease-in-out;
 }
-header .menu .menu-ul .dropdown .dropdown-text ul li a:hover {
+header .menu .menu-ul .dropdown ul li a:hover {
   color: antiquewhite;
 }
 header .menu-btn {
@@ -113,6 +108,7 @@ footer {
     font-size: 1.3rem;
   }
   header .menu .menu-ul {
+    margin: 0;
     padding: 0;
     width: 12rem;
     position: absolute;
@@ -128,27 +124,25 @@ footer {
     margin: 0;
   }
   header .menu .menu-ul li a {
-    color: crimson;
-  }
-  header .menu .menu-ul li button {
-    color: crimson;
-    margin: 0;
     padding: 0;
+    color: crimson;
   }
   header .menu .menu-ul .dropdown .dropdown-text {
     position: absolute;
+    padding: 0;
     right: 12rem;
   }
-  header .menu .menu-ul .dropdown .dropdown-text ul li {
-    padding: 0.5rem 3rem;
+  header .menu .menu-ul .dropdown .dropdown-text li {
+    padding: 0.5rem 0rem;
     margin: 0;
     background-color: #333;
   }
-  header .menu .menu-ul .dropdown .dropdown-text ul li a {
+  header .menu .menu-ul .dropdown .dropdown-text li a {
+    padding: 0 1rem;
     color: crimson;
     transition: 0.5 ease-in-out;
   }
-  header .menu .menu-ul .dropdown .dropdown-text ul li a:hover {
+  header .menu .menu-ul .dropdown .dropdown-text li a:hover {
     color: antiquewhite;
   }
   header .menu-btn {
