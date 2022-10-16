@@ -1,12 +1,16 @@
 let menuBtn = document.getElementById('menu_btn');
 let menuItem = document.querySelector('.menu .menu-ul');
+
+let dropdownCategory = document.getElementById('dropdown_id');
 let categorySection = document.getElementById('categories_id');
 let productSection = document.getElementById('products_id');
-let dropdownCategory = document.getElementById('dropdown_id');
+let headingProductsMenu = document.getElementById('chose_heading_id');
+/* let headingMenuText = undefined; */
 let changeHeadingProducts = document.querySelector('.heading-products');
 let searchInput = document.getElementById('search_id');
 let selectOption = document.getElementById('options_id');
-let categoryTitle = document.querySelector('.heading-products');
+let modal = document.getElementById('modal');
+
 let filterProducts = [];
 
 let today = new Date;
@@ -77,17 +81,21 @@ const choseCategoryByImage = (e) => {
         displayProducts(filterItem);
 }
 
+const showAllHeading = () => {
+    displayProducts(filterProducts)
+}
+
 //Search by name in this category
 searchInput.addEventListener("input", (e) => {
     let value = e.target.value.toLowerCase();
 
     let filterByNameCategory = filterProducts.filter(item => 
-        item.title.toLowerCase().includes(value) && item.category.name ===  categoryTitle.innerText);
+        item.title.toLowerCase().includes(value) && item.category.name ===  changeHeadingProducts.innerText);
 
     let filterByNameAll = filterProducts.filter(item => 
         item.title.toLowerCase().includes(value));
 
-    if(categoryTitle.innerText === 'All Products'){
+    if(changeHeadingProducts.innerText === 'All Products'){
         displayProducts(filterByNameAll);
     } else {
         displayProducts(filterByNameCategory);
@@ -95,9 +103,50 @@ searchInput.addEventListener("input", (e) => {
 });
 
 //Filter with options
-selectOption.addEventListener("onchange", (e) => {
-    
-})
+selectOption.addEventListener('change', (e) => {
+    let value = e.target.value;
+
+    switch(value){
+        case 'all':
+            if (changeHeadingProducts.innerText !== 'All Products') {
+                displayProducts(filterProducts);
+                changeHeadingProducts.innerText = 'All Products';
+            }
+            
+            break;
+
+        case 'lower_price':
+            let sortByLowerPrice = filterProducts.sort((a,b) => 
+                a.price - b.price);
+            
+            let sortLowerCategory = sortByLowerPrice.filter(item => 
+                item.category.name === changeHeadingProducts.innerText);
+
+            if(changeHeadingProducts.innerText === 'All Products'){
+                displayProducts(filterProducts);
+            } else {
+                displayProducts(sortLowerCategory);
+            }
+
+            break;
+
+        case 'higher_price':
+            let sortByHigherPrice = filterProducts.sort((a,b) => 
+                b.price - a.price);
+
+            let sortHigherCategory = sortByHigherPrice.filter(item => 
+                item.category.name === changeHeadingProducts.innerText);
+
+            if(changeHeadingProducts.innerText === 'All Products'){
+                displayProducts(filterProducts)
+            } else {    
+                displayProducts(sortHigherCategory);
+            }
+
+            break;     
+    }
+});
+
 
 
 //Replace empty property of images with category image
@@ -120,24 +169,7 @@ const iteemCategory = (item) => {
     }
     return item;
 }
-
-//Display products
-const displayProducts = async (data) => {
-    let showData = data?.map((item) => {
-        template_category = products_template_id.innerHTML;
-
-        template_category = template_category.replaceAll('${id}', item['id']);
-        template_category = template_category.replaceAll('${image}', item['images'][0] === '' ? iteemCategory(item.category.name) : item['images'][0]);
-        template_category = template_category.replaceAll('${name}', item['title']);
-        template_category = template_category.replaceAll('${description}', item['description'].substring(0, 50));
-
-        return template_category;
-        
-    }).join('');
-    
-    productSection.innerHTML = showData;
-}
-      
+     
 //Display category
 const displayData = async (data) => {
     let showData = data?.map((item) => {
@@ -162,7 +194,60 @@ const displayData = async (data) => {
 
     categorySection.innerHTML = showData;
     dropdownCategory.innerHTML = showDropdown;
+    headingProductsMenu.innerHTML += showDropdown;
+
+    /* headingMenuText = headingProductsMenu.querySelectorAll('li a');
+    headingMenuText.forEach(item => {
+        if(changeHeadingProducts.innerText === item.innerText){
+            item.classList.add('active-title');
+        }
+    }) */
 }
 
+//Display products
+const displayProducts = async (data) => {
+    let showData = data?.map((item) => {
+        template_category = products_template_id.innerHTML;
+
+        template_category = template_category.replaceAll('${id}', item['id']);
+        template_category = template_category.replaceAll('${image}', item['images'][0] === '' ? iteemCategory(item.category.name) : item['images'][0]);
+        template_category = template_category.replaceAll('${name}', item['title']);
+        template_category = template_category.replaceAll('${price}', item['price']);
+
+        return template_category;
+        
+    }).join('');
+
+    productSection.innerHTML = showData;
+}
+
+const openModal = async (btn) => {
+    let idModal = btn.parentElement.parentElement.parentElement.getAttribute('id');
+    idModal = parseInt(idModal);
+
+    try{
+        const response = await fetch(`https://api.escuelajs.co/api/v1/products/${idModal}`);
+        const data = await response.json();
+        console.log(data)
+        displayItemId(data);  
+    } catch (e) {
+        console.log('There was a problem: ', e);
+    }
+       
+}
+
+const displayItemId = (item) => {
+    template_item = template_modal.innerHTML;
+
+    template_item = template_item.replaceAll('${name}', item['title']);
+
+    modal.innerHTML = template_item;
+    modal.style.display = 'block';
+
+}
+
+
+
+//initalization
 fetchData();
 fetchProducts();

@@ -22,13 +22,19 @@
   background-color: antiquewhite;
   opacity: 0.8;
 }
-.card-product .card-description h2,
-.card-product .card-description h5 {
+.card-product .card-description h2 {
   color: #333;
 }
-.card-product .card-description button {
-  float: right;
-  margin: 0.5rem;
+.card-product .card-description .card-des-price-btn {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.card-product .card-description .card-des-price-btn h1 {
+  letter-spacing: normal;
+}
+.card-product .card-description .card-des-price-btn button {
+  margin: 0 0.5rem;
   background: none;
   color: #333;
   border: none;
@@ -38,7 +44,7 @@
   cursor: pointer;
   transition: 0.5s ease-in-out;
 }
-.card-product .card-description button:hover {
+.card-product .card-description .card-des-price-btn button:hover {
   transform: scale(1.2);
   color: crimson;
 }/*# sourceMappingURL=card-product.css.map */

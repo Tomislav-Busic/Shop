@@ -5,12 +5,14 @@ main {
     margin: 0;
     width: 100%;
     min-height: 100vh;
+
     section {
         @include var.section-mix;
         padding-bottom: 5rem;
 
         h1{
             font-size: 2rem;
+            letter-spacing: 1rem;
         }
 
         .categories, 
@@ -19,11 +21,66 @@ main {
             flex-wrap: wrap;
             width: 100%;
         }
+
+        .heading-products-categ{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            ul{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                list-style: none;
+
+                li{
+                    margin: 0 1rem;
+                    padding: 0.5rem 0;
+
+                    &:hover{
+                        transform: scale(1.3);
+                        margin: 0 1rem;
+
+                        a{
+                            color: var.$myColor;
+                            letter-spacing: 0.1rem;
+                        }
+                    }
+
+                    a{
+                        @include var.ahref;
+                        position: relative;
+                    }
+                }
+            }
+        }
     } 
+}
+
+.active-title{
+    color: var.$myColor;
+                            letter-spacing: 0.1rem;
+
 }
 
 @media (max-width: 1200px){
     main {
-        padding: 4rem 1rem;
+        padding: 4rem 0.5rem;
+
+        section{
+            padding: 1rem 0;
+            margin: 0;
+        }
+    }
+}
+
+@media (max-width: 800px){
+    main {
+        padding: 3rem 0.5rem;
+
+        section{
+            padding: 1rem 0;
+            margin: 0;
+        }
     }
 }

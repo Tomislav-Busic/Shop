@@ -4,7 +4,7 @@
     position: relative;
     padding: 1rem;
     margin: 1rem;
-    width: 30rem;
+    width: 25rem;
     height: 20rem;
     cursor: pointer;
     /* overflow: hidden; */
@@ -16,7 +16,7 @@
         }
 
         h1{
-            transform: translate(-50%, -50%) scale3d(1.2, 1.2, 1.0) rotateY(360deg);
+            transform: translate(-50%, -50%) scale3d(1.6, 1.6, 1.0) rotateY(360deg);
             background-color: var.$myColor;
             color: var.$whiteAnt;
             box-shadow: 0 20px 50px var.$myColor,
@@ -49,5 +49,18 @@
     }
 }
 
+@media (max-width: 1200px){
+    .card-category{
+        width: 22rem;
+        height: 18rem;
+    }
+}
 
-
+@media (max-width: 700px){
+    .card-category{
+        width: 22rem;
+        height: 18rem;
+        margin: 1rem 0;
+        padding: 0.3rem;
+    }
+}

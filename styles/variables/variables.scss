@@ -30,12 +30,21 @@ $fontText: 'DM Sans', sans-serif;
 }
 
 @mixin filtering{
-        padding: 0.5rem 1rem;
-        margin: 1rem;
-        background-color: var.$whiteAnt;
-        color: var.$textColor;
-        font-size: 1.2rem;
-        cursor: pointer;
-        border: 2px solid var.$textColor;
-        border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    background-color: $whiteAnt;
+    color: $textColor;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: 2px solid $textColor;
+    border-radius: 0.3rem;
+}
+
+@mixin ahref{
+    text-decoration: none;
+    color: $textColor;
+    font-size: $pFontSize;
+    font-family: $fontHeaders;
+    font-weight: bolder;
+    transition: 0.3s ease-in-out;
 }

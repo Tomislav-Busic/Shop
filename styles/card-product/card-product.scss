@@ -24,27 +24,35 @@
         background-color: var.$whiteAnt;
         opacity: 0.8;
 
-        h2, 
-        h5{
+        h2{
             color: var.$textColor;
         }
 
-        button{
-            float: right;
-            margin: 0.5rem;
-            background: none;
-            color: var.$textColor;
-            border: none;
-            font-weight: bolder;
-            font-size: 1.3rem;
-            font-family: var.$fontHeaders;
-            cursor: pointer;
-            transition: 0.5s ease-in-out;
-        
-        &:hover{
-            transform: scale(1.2);
-            color: var.$myColor;
-        }
+        .card-des-price-btn{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+
+            h1{
+                letter-spacing: normal;
+            }
+
+            button{
+                margin: 0 0.5rem;
+                background: none;
+                color: var.$textColor;
+                border: none;
+                font-weight: bolder;
+                font-size: 1.3rem;
+                font-family: var.$fontHeaders;
+                cursor: pointer;
+                transition: 0.5s ease-in-out;
+            
+                &:hover{
+                    transform: scale(1.2);
+                    color: var.$myColor;
+                }
+            }
         }
     }
 }
