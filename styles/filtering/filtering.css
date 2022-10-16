@@ -1,0 +1,29 @@
+/*COLORS*/
+/*FONTS*/
+.filtering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 3rem 0;
+}
+.filtering input {
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  background-color: antiquewhite;
+  color: #333;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 2px solid #333;
+  border-radius: 0.3rem;
+}
+.filtering select {
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  background-color: antiquewhite;
+  color: #333;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 2px solid #333;
+  border-radius: 0.3rem;
+}/*# sourceMappingURL=filtering.css.map */

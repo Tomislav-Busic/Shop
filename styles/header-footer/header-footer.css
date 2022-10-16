@@ -45,23 +45,23 @@ header .menu .menu-ul li:hover .dropdown-text {
 header .menu .menu-ul li:hover .dropdown-text li {
   display: block;
 }
-header .menu .menu-ul .dropdown {
-  display: flex;
-  justify-content: center;
+header .menu .menu-ul li {
+  display: inline-block;
 }
-header .menu .menu-ul .dropdown ul {
+header .menu .menu-ul li ul {
+  display: block;
   position: absolute;
-  padding-top: 2rem;
   width: 10rem;
   display: none;
+  text-align: center;
 }
-header .menu .menu-ul .dropdown ul li {
+header .menu .menu-ul li ul li {
   padding: 0.5rem 1rem;
   width: 100%;
   margin: 0;
   background-color: crimson;
 }
-header .menu .menu-ul .dropdown ul li a {
+header .menu .menu-ul li ul li a {
   padding: 0 1rem;
   text-decoration: none;
   color: #333;
@@ -70,7 +70,7 @@ header .menu .menu-ul .dropdown ul li a {
   font-weight: bolder;
   transition: 0.5 ease-in-out;
 }
-header .menu .menu-ul .dropdown ul li a:hover {
+header .menu .menu-ul li ul li a:hover {
   color: antiquewhite;
 }
 header .menu-btn {
@@ -127,22 +127,23 @@ footer {
     padding: 0;
     color: crimson;
   }
-  header .menu .menu-ul .dropdown .dropdown-text {
+  header .menu .menu-ul li .dropdown-text {
     position: absolute;
     padding: 0;
-    right: 12rem;
+    right: 0;
+    width: 12rem;
   }
-  header .menu .menu-ul .dropdown .dropdown-text li {
+  header .menu .menu-ul li .dropdown-text li {
     padding: 0.5rem 0rem;
     margin: 0;
     background-color: #333;
   }
-  header .menu .menu-ul .dropdown .dropdown-text li a {
+  header .menu .menu-ul li .dropdown-text li a {
     padding: 0 1rem;
     color: crimson;
     transition: 0.5 ease-in-out;
   }
-  header .menu .menu-ul .dropdown .dropdown-text li a:hover {
+  header .menu .menu-ul li .dropdown-text li a:hover {
     color: antiquewhite;
   }
   header .menu-btn {

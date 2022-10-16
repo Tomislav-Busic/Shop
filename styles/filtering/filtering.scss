@@ -1,0 +1,15 @@
+@use '../variables/variables.scss' as var;
+
+.filtering{
+    @include var.center;
+    flex-wrap: wrap;
+    padding: 3rem 0;
+
+    input{
+        @include var.filtering;
+    }
+
+    select{
+        @include var.filtering;
+    }
+}

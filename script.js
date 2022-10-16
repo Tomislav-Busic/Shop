@@ -4,6 +4,9 @@ let categorySection = document.getElementById('categories_id');
 let productSection = document.getElementById('products_id');
 let dropdownCategory = document.getElementById('dropdown_id');
 let changeHeadingProducts = document.querySelector('.heading-products');
+let searchInput = document.getElementById('search_id');
+let selectOption = document.getElementById('options_id');
+let categoryTitle = document.querySelector('.heading-products');
 let filterProducts = [];
 
 let today = new Date;
@@ -52,6 +55,7 @@ async function fetchProducts() {
     }
 }
 
+//Chose category with dropdown link
 const choseCategory = (e) => {
     let itemChild = e.querySelector('a');
     let itemText = itemChild.innerText;
@@ -62,6 +66,7 @@ const choseCategory = (e) => {
         displayProducts(filterItem);
 };
 
+//Chose category with dropdown link
 const choseCategoryByImage = (e) => {
     let itemChild = e.querySelector('h1');
     let itemText = itemChild.innerText;
@@ -72,22 +77,64 @@ const choseCategoryByImage = (e) => {
         displayProducts(filterItem);
 }
 
-//Display category
+//Search by name in this category
+searchInput.addEventListener("input", (e) => {
+    let value = e.target.value.toLowerCase();
+
+    let filterByNameCategory = filterProducts.filter(item => 
+        item.title.toLowerCase().includes(value) && item.category.name ===  categoryTitle.innerText);
+
+    let filterByNameAll = filterProducts.filter(item => 
+        item.title.toLowerCase().includes(value));
+
+    if(categoryTitle.innerText === 'All Products'){
+        displayProducts(filterByNameAll);
+    } else {
+        displayProducts(filterByNameCategory);
+    }
+});
+
+//Filter with options
+selectOption.addEventListener("onchange", (e) => {
+    
+})
+
+
+//Replace empty property of images with category image
+const iteemCategory = (item) => {
+    switch (item){
+        case "Furniture":
+            item = "https://api.lorem.space/image/furniture?w=640&h=480&r=3563";
+            break;
+        case "Clothes":
+            item = "https://api.lorem.space/image/fashion?w=640&h=480&r=8681";
+            break;
+        case "Electronics":
+            item = "https://api.lorem.space/image/watch?w=640&h=480&r=7135";
+            break;
+        case "Shoes":
+            item = "https://api.lorem.space/image/shoes?w=640&h=480&r=5563";
+            break;
+        case "Others":
+            item = "https://api.lorem.space/image?w=640&h=480&r=9518";
+    }
+    return item;
+}
+
+//Display products
 const displayProducts = async (data) => {
     let showData = data?.map((item) => {
-
         template_category = products_template_id.innerHTML;
 
         template_category = template_category.replaceAll('${id}', item['id']);
-        template_category = template_category.replaceAll('${image}', item['images'][0]);
+        template_category = template_category.replaceAll('${image}', item['images'][0] === '' ? iteemCategory(item.category.name) : item['images'][0]);
         template_category = template_category.replaceAll('${name}', item['title']);
         template_category = template_category.replaceAll('${description}', item['description'].substring(0, 50));
 
         return template_category;
-
+        
     }).join('');
-
-
+    
     productSection.innerHTML = showData;
 }
       

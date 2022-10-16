@@ -51,15 +51,15 @@ header{
             }
         }
 
-        .dropdown{
-            display: flex;
-            justify-content: center;
-            
+        li{
+            display: inline-block;
+
             ul{
+                display: block;
                 position: absolute;
-                padding-top: 2rem;
                 width: 10rem;
                 display: none;
+                text-align: center;
 
                 li{
                     padding: 0.5rem 1rem;
@@ -148,12 +148,13 @@ footer{
                }
             }
 
-            .dropdown{    
+            li{    
                                        
                 .dropdown-text{
                     position: absolute;
                     padding: 0;
-                    right: 12rem;
+                    right: 0;
+                    width: 12rem;
 
                     li{
                         padding: 0.5rem 0rem;

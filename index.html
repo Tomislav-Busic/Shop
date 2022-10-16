@@ -17,13 +17,14 @@
         <div class="menu">
             <ul class="menu-ul">
                 <li><a href="/">Home</a></li>
-                <li class="dropdown">
+                <li>
                     <a href="#">Categories &#9662</a>
                     <ul class="dropdown-text" id="dropdown_id">
                         
                     </ul>
                 </li>
                 <li><a href="#">News</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </div>
 
@@ -46,7 +47,15 @@
 
             <h1 class="heading-products">All Products</h1>
 
-            <br><br><br>
+            <div class="filtering">
+                <input id="search_id" type="text" placeholder="Search by Name">
+
+                <select name="Search" id="options_id">
+                    <option value="all">All products</option>
+                    <option value="lower_price">Lower price</option>
+                    <option value="higher_price">Higher price</option>
+                </select>
+            </div>
 
             <div class="products" id="products_id"></div>
         </section>
