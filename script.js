@@ -108,17 +108,25 @@ searchInput.addEventListener("input", (e) => {
     }
 });
 
-//Filter with options
+/* Filter with the options.
+   After the user chose 'All Products', it will be displayed all
+   but also it will be change the heading in the products section.
+    */
 selectOption.addEventListener('change', (e) => {
     let value = e.target.value;
 
+    const diferentOfAllProducts = (diferentOptin) => {
+        if(changeHeadingProducts.innerText === 'All Products'){
+            displayProducts(filterProducts);
+        } else {
+            displayProducts(diferentOptin);
+        }
+    }
+
     switch(value){
         case 'all':
-            if (changeHeadingProducts.innerText !== 'All Products') {
-                displayProducts(filterProducts);
-                changeHeadingProducts.innerText = 'All Products';
-            }
-            
+            displayProducts(filterProducts);
+            changeHeadingProducts.innerText = 'All Products';
             break;
 
         case 'lower_price':
@@ -128,11 +136,7 @@ selectOption.addEventListener('change', (e) => {
             let sortLowerCategory = sortByLowerPrice.filter(item => 
                 item.category.name === changeHeadingProducts.innerText);
 
-            if(changeHeadingProducts.innerText === 'All Products'){
-                displayProducts(filterProducts);
-            } else {
-                displayProducts(sortLowerCategory);
-            }
+                diferentOfAllProducts(sortLowerCategory);
             break;
 
         case 'higher_price':
@@ -142,18 +146,15 @@ selectOption.addEventListener('change', (e) => {
             let sortHigherCategory = sortByHigherPrice.filter(item => 
                 item.category.name === changeHeadingProducts.innerText);
 
-            if(changeHeadingProducts.innerText === 'All Products'){
-                displayProducts(filterProducts)
-            } else {    
-                displayProducts(sortHigherCategory);
-            }
+                diferentOfAllProducts(sortHigherCategory);
             break;     
     }
 });
 
 
 
-//Replace empty property of images with category image
+//Replace the wrong property of the images with the category image
+//Stlill looking for the better solution :)
 const itemCategory = (item) => {
     let imageUrl = item.images[0];
 
@@ -171,8 +172,10 @@ const itemCategory = (item) => {
     return item;
 }
      
-/* Replace the data in the category and dropdown template and
-   set this templates category section and menu dropdown   */
+/* Replace the data in the category and dropdown template.
+   Then set this templates category section and
+   menu dropdown in corresponding place. 
+   + set the heading choices in the Products section*/
 const displayData = async (data) => {
     let showData = data?.map((item) => {
 
