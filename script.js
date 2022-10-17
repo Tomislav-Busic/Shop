@@ -127,7 +127,6 @@ selectOption.addEventListener('change', (e) => {
             } else {
                 displayProducts(sortLowerCategory);
             }
-
             break;
 
         case 'higher_price':
@@ -142,7 +141,6 @@ selectOption.addEventListener('change', (e) => {
             } else {    
                 displayProducts(sortHigherCategory);
             }
-
             break;     
     }
 });
@@ -150,27 +148,24 @@ selectOption.addEventListener('change', (e) => {
 
 
 //Replace empty property of images with category image
-const iteemCategory = (item) => {
-    switch (item){
-        case "Furniture":
-            item = "https://api.lorem.space/image/furniture?w=640&h=480&r=3563";
+const itemCategory = (item) => {
+    let imageUrl = item.images[0];
+
+    switch (imageUrl){
+        case '':
+        case 'string':
+        case 'https://www.cike.ws':
+        case 'https://www.cojef.tv':
+        case 'https://www.mugoqifokyf.co.uk':
+        case 'https://paceimg.com/640/480/any':
+            item = imageUrl;
             break;
-        case "Clothes":
-            item = "https://api.lorem.space/image/fashion?w=640&h=480&r=8681";
-            break;
-        case "Electronics":
-            item = "https://api.lorem.space/image/watch?w=640&h=480&r=7135";
-            break;
-        case "Shoes":
-            item = "https://api.lorem.space/image/shoes?w=640&h=480&r=5563";
-            break;
-        case "Others":
-            item = "https://api.lorem.space/image?w=640&h=480&r=9518";
     }
+
     return item;
 }
      
-//Display category
+//Replace the data in the category and dropdown template and set this templates category section and menu dropdown  
 const displayData = async (data) => {
     let showData = data?.map((item) => {
 
@@ -204,23 +199,24 @@ const displayData = async (data) => {
     }) */
 }
 
-//Display products
+//Replace the data in the template products and set this template in the product section
 const displayProducts = async (data) => {
     let showData = data?.map((item) => {
-        template_category = products_template_id.innerHTML;
+        template_product = products_template_id.innerHTML;
 
-        template_category = template_category.replaceAll('${id}', item['id']);
-        template_category = template_category.replaceAll('${image}', item['images'][0] === '' ? iteemCategory(item.category.name) : item['images'][0]);
-        template_category = template_category.replaceAll('${name}', item['title']);
-        template_category = template_category.replaceAll('${price}', item['price']);
+        template_product = template_product.replaceAll('${id}', item['id']);
+        template_product = template_product.replaceAll('${image}', item['images'][0] === itemCategory(item) ? item['category']['image'] : item['images'][0]);
+        template_product = template_product.replaceAll('${name}', item['title']);
+        template_product = template_product.replaceAll('${price}', item['price']);
 
-        return template_category;
+        return template_product;
         
     }).join('');
 
     productSection.innerHTML = showData;
 }
 
+//Open the modal and fetch the product Id if this Id is equal with button parent element Id
 const openModal = async (btn) => {
     let idModal = btn.parentElement.parentElement.parentElement.getAttribute('id');
     idModal = parseInt(idModal);
@@ -236,6 +232,8 @@ const openModal = async (btn) => {
        
 }
 
+//Replace the data in the modal template and set this template in the modal section
+//Open Modal
 const displayItemId = (item) => {
     template_item = template_modal.innerHTML;
 
