@@ -59,18 +59,24 @@ async function fetchProducts() {
     }
 }
 
-//Chose category with dropdown link
+/* Chose the Category with the dropdown link.
+   Then change the Category heading with chosen link and
+   close the modal if it's open.
+   Then filter the Products by chosen Category */
 const choseCategory = (e) => {
     let itemChild = e.querySelector('a');
     let itemText = itemChild.innerText;
     changeHeadingProducts.innerText = itemText;
+    modal.style.display = 'none';
 
     let filterItem = filterProducts.filter(item => 
         item.category.name === itemText);
         displayProducts(filterItem);
 };
 
-//Chose category with dropdown link
+/* Chose the Category with onclick the image.
+   Then change the Category heading with chosen image.
+   Then filter the Products by chosen Category */
 const choseCategoryByImage = (e) => {
     let itemChild = e.querySelector('h1');
     let itemText = itemChild.innerText;
@@ -165,7 +171,8 @@ const itemCategory = (item) => {
     return item;
 }
      
-//Replace the data in the category and dropdown template and set this templates category section and menu dropdown  
+/* Replace the data in the category and dropdown template and
+   set this templates category section and menu dropdown   */
 const displayData = async (data) => {
     let showData = data?.map((item) => {
 
@@ -199,7 +206,8 @@ const displayData = async (data) => {
     }) */
 }
 
-//Replace the data in the template products and set this template in the product section
+/* Replace the data in the template products and
+   set this template in the product section */
 const displayProducts = async (data) => {
     let showData = data?.map((item) => {
         template_product = products_template_id.innerHTML;
@@ -216,7 +224,8 @@ const displayProducts = async (data) => {
     productSection.innerHTML = showData;
 }
 
-//Open the modal and fetch the product Id if this Id is equal with button parent element Id
+/* Open the modal and fetch the product Id if
+   this Id is equal with button parent element Id */
 const openModal = async (btn) => {
     let idModal = btn.parentElement.parentElement.parentElement.getAttribute('id');
     idModal = parseInt(idModal);
@@ -232,8 +241,9 @@ const openModal = async (btn) => {
        
 }
 
-//Replace the data in the modal template and set this template in the modal section
-//Open Modal
+/* Replace the data in the modal template and
+   set this template in the modal section
+   Open Modal */
 const displayItemId = (item) => {
     template_item = template_modal.innerHTML;
 

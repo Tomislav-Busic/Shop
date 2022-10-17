@@ -70,11 +70,11 @@
 
             <div class="products" id="products_id"></div>
 
+            <div class="modal" id="modal"></div>
+            
         </section>
 
-        <section>
-            <div id="modal"></div>
-        </section>
+        
 
     </main>
 
@@ -89,14 +89,17 @@
 
     <!-- template categories -->
     <template id="category_template_id">
+
         <a href="#products_section" class="card-category" onclick="choseCategoryByImage(this)">
             <img src="${image}" alt="${name}">
             <h1>${name}</h1>
         </a>
+
     </template>
 
     <!-- template products -->
     <template id="products_template_id">
+
         <a class="card-product" id="${id}">
             <img src="${image}" alt="${name}">
             <div class="card-description">
@@ -107,16 +110,32 @@
                 </div>
             </div>
         </a>
+
     </template>
 
     <!-- template dropdown -->
     <template id="template_dropdown_id">
+
         <li onclick="choseCategory(this)"><a href="#products_section">${name}</a></li>
+
     </template>
 
     <!-- template modal -->
     <template id="template_modal">
-        <h1 style="color: red;">${name}</h1>
+        
+        <div class="details">
+            <h4>${category}</h4>
+            <div class="images">
+                <img src="${image}" alt="${name} img">
+            </div>
+            <h1>${name}</h1>
+            <div class="description">
+                <div class="show">${description}</div>
+                <div class="hide">${description}</div>
+            </div>
+            <button onclick="closeModal()">&#9668 BACK</button>
+        </div>
+
     </template>
 
 

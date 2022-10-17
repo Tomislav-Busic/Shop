@@ -68,7 +68,7 @@ header .menu .menu-ul li ul li a {
   font-size: 1.3rem;
   font-family: "Bebas Neue", cursive;
   font-weight: bolder;
-  transition: 0.5 ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 header .menu .menu-ul li ul li a:hover {
   color: antiquewhite;
