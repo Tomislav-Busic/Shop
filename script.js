@@ -11,7 +11,7 @@ let searchInput = document.getElementById('search_id');
 let selectOption = document.getElementById('options_id');
 let modal = document.getElementById('modal');
 
-let filterProducts = [];
+let allproductsArray = [];
 
 let today = new Date;
 footer_copyrights.innerText += today.getFullYear();
@@ -34,7 +34,7 @@ window.addEventListener('scroll', () => {
     menuItem.style.right = '-15rem';
 });
 
-
+//Get the data for the category and products form the Api.js
 async function getAllApis() {
     let getApiSource = new Api();
 
@@ -43,23 +43,23 @@ async function getAllApis() {
     displayCategory(getCategory);
 
     getProducts = await getApiSource.fetchProducts();
-    filterProducts = getProducts;
+    allproductsArray = getProducts;
     console.log(getProducts);
     displayProducts(getProducts);
 }
 
 
 /* Chose the Category with the dropdown link.
-   Then change the Category heading with chosen link and
+   Then change the Category heading text with chosen link and
    close the modal if it's open.
    Then filter the Products by the chosen Category */
 const choseCategory = (e) => {
     let itemChild = e.querySelector('a');
     let itemText = itemChild.innerText;
     changeHeadingProducts.innerText = itemText;
-    modal.style.display = 'none';
+  /*   modal.style.display = 'none'; */
 
-    let filterItem = filterProducts.filter(item => 
+    let filterItem = allproductsArray.filter(item => 
         item.category.name === itemText);
         displayProducts(filterItem);
 };
@@ -72,24 +72,24 @@ const choseCategoryByImage = (e) => {
     let itemText = itemChild.innerText;
     changeHeadingProducts.innerText = itemText;
 
-    let filterItem = filterProducts.filter(item => 
+    let filterItem = allproductsArray.filter(item => 
         item.category.name === itemText);
         displayProducts(filterItem);
 }
 
 //Display 'All Products' on the heading in the products section.
 const showAllHeading = () => {
-    displayProducts(filterProducts)
+    displayProducts(allproductsArray)
 }
 
 //Search by the name for all Categories or for the each diferent Category.
 searchInput.addEventListener("input", (e) => {
     let value = e.target.value.toLowerCase();
 
-    let filterByNameAll = filterProducts.filter(item => 
+    let filterByNameAll = allproductsArray.filter(item => 
         item.title.toLowerCase().includes(value));
 
-    let filterByNameCategory = filterProducts.filter(item => 
+    let filterByNameCategory = allproductsArray.filter(item => 
         item.title.toLowerCase().includes(value) && item.category.name ===  changeHeadingProducts.innerText);
 
     if(changeHeadingProducts.innerText === 'All Products'){
@@ -112,20 +112,20 @@ selectOption.addEventListener('change', (e) => {
 
     const diferentOfAllProducts = (diferentOption) => {
         if(changeHeadingProducts.innerText === 'All Products'){
-            displayProducts(filterProducts);
+            displayProducts(allproductsArray);
         } else {
             displayProducts(diferentOption);
         }
     }
-
+    
     switch(value){
         case 'all':
-            displayProducts(filterProducts);
+            displayProducts(allproductsArray);
             changeHeadingProducts.innerText = 'All Products';
             break;
 
         case 'lower_price':
-            let sortByLowerPrice = filterProducts.sort((a,b) => 
+            let sortByLowerPrice = allproductsArray.sort((a,b) => 
                 a.price - b.price);
             
             let sortLowerCategory = sortByLowerPrice.filter(item => 
@@ -133,9 +133,9 @@ selectOption.addEventListener('change', (e) => {
 
                 diferentOfAllProducts(sortLowerCategory);
             break;
-
+            
         case 'higher_price':
-            let sortByHigherPrice = filterProducts.sort((a,b) => 
+            let sortByHigherPrice = allproductsArray.sort((a,b) => 
                 b.price - a.price);
 
             let sortHigherCategory = sortByHigherPrice.filter(item => 
@@ -182,7 +182,7 @@ const displayCategory = async (data) => {
         return template_category;
 
     }).join('');
-
+    
     let showDropdown =  await data?.map((item) => {
 
         template_dropdown = template_dropdown_id.innerHTML;
@@ -228,27 +228,26 @@ const openModal = async (btn) => {
     let idModal = btn.parentElement.parentElement.parentElement.getAttribute('id');
     idModal = parseInt(idModal);
 
-    try{
-        const response = await fetch(`https://api.escuelajs.co/api/v1/products/${idModal}`);
-        const data = await response.json();
-        console.log(data)
-        displayItemId(data);  
-    } catch (e) {
-        console.log('There was a problem: ', e);
-    }
+    
+    let fetchData = new Api();
+    fetchData.productId = idModal;
+    fetchData = await fetchData.fetchProductId(fetchData.productId);
+    console.log(fetchData);
+    window.location.href = 'product.html';
+    displayItemId(fetchData);
        
 }
+
 
 /* Replace the data in the modal template and
    set this template in the modal section
    Open Modal */
-const displayItemId = (item) => {
+const displayItemId = async (item) => {
     template_item = template_modal.innerHTML;
 
     template_item = template_item.replaceAll('${name}', item['title']);
 
-    modal.innerHTML = template_item;
-    modal.style.display = 'block';
+    modal.innerHTML =  template_item;
 
 }
 
