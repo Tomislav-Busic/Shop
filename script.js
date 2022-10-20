@@ -11,6 +11,7 @@ let searchInput = document.getElementById('search_id');
 let selectOption = document.getElementById('options_id');
 
 let allproductsArray = [];
+let allCategoryArray = [];
 
 let today = new Date;
 footer_copyrights.innerText += today.getFullYear();
@@ -40,12 +41,23 @@ async function getAllApis() {
     getCategory = await getApiSource.fetchCategory();
     console.log(getCategory);
     displayCategory(getCategory);
+    
 
     getProducts = await getApiSource.fetchProducts();
     allproductsArray = getProducts;
     console.log(getProducts);
     displayProducts(getProducts);
+    
 }
+
+/* const displayFullCategory = (categories) => {
+    let filterEmptyCategory = categories.forEach(category => 
+        allCategoryArray.filter(item => 
+            item.category.name === category.name));
+    
+    console.log(filterEmptyCategory);
+    displayCategory(filterEmptyCategory);
+} */
 
 
 /* Chose the Category with the dropdown link.
