@@ -9,7 +9,6 @@ let headingProductsMenu = document.getElementById('chose_heading_id');
 let changeHeadingProducts = document.querySelector('.heading-products');
 let searchInput = document.getElementById('search_id');
 let selectOption = document.getElementById('options_id');
-let modal = document.getElementById('modal');
 
 let allproductsArray = [];
 
@@ -220,38 +219,17 @@ const displayProducts = async (data) => {
     }).join('');
 
     productSection.innerHTML = showData;
+
 }
 
-/* Open the modal and fetch the product Id if
-   this Id is equal with button parent element Id */
-const openModal = async (btn) => {
-    let idModal = btn.parentElement.parentElement.parentElement.getAttribute('id');
+const openDetails = (btn) => {
+    let idModal = btn.parentElement.parentElement.parentElement.getAttribute('data-id');
     idModal = parseInt(idModal);
 
-    
-    let fetchData = new Api();
-    fetchData.productId = idModal;
-    fetchData = await fetchData.fetchProductId(fetchData.productId);
-    console.log(fetchData);
+    localStorage.setItem('id-modal', idModal);
+    console.log(idModal)
     window.location.href = 'product.html';
-    displayItemId(fetchData);
-       
 }
-
-
-/* Replace the data in the modal template and
-   set this template in the modal section
-   Open Modal */
-const displayItemId = async (item) => {
-    template_item = template_modal.innerHTML;
-
-    template_item = template_item.replaceAll('${name}', item['title']);
-
-    modal.innerHTML =  template_item;
-
-}
-
-
 
 //initalization
 getAllApis();

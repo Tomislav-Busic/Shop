@@ -57,7 +57,7 @@
                     <option value="higher_price">Higher price</option>
                 </select>
             </div>
-
+            <section id="modal"></section>
             <div class="heading-products-categ">
 
                 <ul id="chose_heading_id">
@@ -102,13 +102,13 @@
     <!-- template products -->
     <template id="products_template_id">
 
-        <a class="card-product" id="${id}">
+        <a class="card-product" data-id="${id}" id="card">
             <img src="${image}" alt="${name}">
             <div class="card-description">
                 <h2>${name}</h2>
                 <div class="card-des-price-btn">
                     <h1>$ ${price}</h1>
-                    <button onclick="openModal(this)">See More</button>
+                    <button onclick="openDetails(this)">See More</button>
                 </div>
             </div>
         </a>
@@ -122,23 +122,11 @@
 
     </template>
 
-    <!-- template modal -->
-    <template id="template_modal">
-        
-        <div class="details">
-            <h4>${category}</h4>
-            <div class="images">
-                <img src="${image}" alt="${name} img">
-            </div>
-            <h1>${name}</h1>
-            <div class="description">
-                <div class="show">${description}</div>
-                <div class="hide">${description}</div>
-            </div>
-            <button onclick="closeModal()">&#9668 BACK</button>
-        </div>
+    
 
-    </template>
+
+
+    
 
 
 
