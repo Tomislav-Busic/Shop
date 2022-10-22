@@ -415,6 +415,9 @@ main section .heading-products-categ ul li a {
   text-align: center;
   letter-spacing: 0.1rem;
 }
+.product-section .details h1 {
+  font-size: 2rem;
+}
 .product-section .details h3 {
   color: crimson;
   padding: 1rem;
@@ -422,12 +425,13 @@ main section .heading-products-categ ul li a {
 .product-section .details h2 {
   padding: 0.5rem;
   color: crimson;
+  font-size: 1.8rem;
 }
 .product-section .details .images {
   padding: 0;
-  margin-bottom: 1rem;
-  width: 50rem;
-  height: 35rem;
+  margin-bottom: 3rem;
+  width: 40rem;
+  height: 30rem;
   position: relative;
 }
 .product-section .details .images .images-place {

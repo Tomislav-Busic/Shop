@@ -1,6 +1,7 @@
 let sectionProduct = document.getElementById('section_product_id');
 let productSection = document.querySelector('.product-section');
 let imagesAll = undefined;
+let imgNum = 0;
 
 
 
@@ -43,9 +44,9 @@ set this template in the product section*/
     //Get all images form the api url
     images?.forEach(img => {
       images_place_id.innerHTML += `<img src="${img}" />`
-    })
+    });
 
-
+    imagesAll = document.querySelectorAll('#images_place_id img');
 } 
 
 //Function for change the text less or more
@@ -69,6 +70,38 @@ const readMore = (btn) => {
 const closeDetails = () => {
   window.location.href = 'index.html#products_section';
 }
+
+//Functions for the image slider
+const moveRight = () => {
+  hideImages();
+
+  imgNum++;
+
+  if(imgNum === imagesAll.length){
+    imgNum = 0;
+  }
+
+  imagesAll[imgNum].style.display = 'block';
+}
+
+const moveLeft = () => {
+  hideImages();
+
+  imgNum--;
+
+  if(imgNum === -1){
+    imgNum = imagesAll.length -1;
+  }
+
+  imagesAll[imgNum].style.display = 'block';
+}
+
+const hideImages = () => {
+  imagesAll.forEach(img => 
+    img.style.display = 'none');
+}
+
+
 
 //initalization
 fetchProduct();

@@ -29,6 +29,10 @@
             letter-spacing: 0.1rem;
         }
 
+        h1{
+            font-size: 2rem;
+        }
+
         h3{
             color: var.$myColor;
             padding: 1rem;
@@ -37,13 +41,14 @@
         h2{
             padding: 0.5rem;
             color: var.$myColor;
+            font-size: 1.8rem;
         }
 
         .images{
             padding: 0;
-            margin-bottom: 1rem;
-            width: 50rem;
-            height: 35rem;
+            margin-bottom: 3rem;
+            width: 40rem;
+            height: 30rem;
             position: relative;
            
             .images-place{
