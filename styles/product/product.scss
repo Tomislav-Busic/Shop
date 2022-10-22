@@ -8,10 +8,10 @@
     
 
     .details{
-        top: 0;
         padding: 0;
         margin: 0;
         width: 100%;
+        min-height: 100vh;
         
         @include var.center-column;
         background-color: rgb(250, 235, 215, 0.7);
@@ -25,24 +25,59 @@
         }
 
         h1, h2, h3{
-            padding: 1rem;
             text-align: center;
+            letter-spacing: 0.1rem;
+        }
+
+        h3{
+            color: var.$myColor;
+            padding: 1rem;
         }
 
         h2{
+            padding: 0.5rem;
             color: var.$myColor;
         }
 
         .images{
-            margin: 0;
             padding: 0;
+            margin-bottom: 1rem;
             width: 50rem;
+            height: 35rem;
+            position: relative;
+           
+            .images-place{
+                padding: 0;
+                margin: 0;
 
-            img{
-                width: 100%;
+                img{
+                    &:first-child{
+                        display: block;
+                    }
+    
+                    display: none;
+                    width: 100%;
+                    height: 100%; 
+                }
+            } 
+            
+            button{
+                position: absolute;
+                top: 45%;
+                background: none;
+                border: none;
+                font-size: 2.5rem;
+                font-weight: bolder;
+                padding: 1rem;
+                color: var.$myColor;
+            }
+
+            button.right{
+                right: 0;
             }
         }
 
+        
         .description{
             @include var.center-column;
             
@@ -53,8 +88,13 @@
 
                 p{
                     font-size: var.$pFontSize;
+                    font-weight: bolder;
                     text-align: center;
-                }
+                }  
+            }
+
+            .hide{
+                display: none;
             }
 
             button{
@@ -75,8 +115,9 @@
         .details{
             .close-details{
                 top: 1rem;
+                left: 1rem;
             }
-            
+
             .images{
                 width: 35rem;
                 height: 25rem; 
@@ -90,7 +131,7 @@
         .details{
             .images{
                 width: 22rem;
-                height: 28rem; 
+                height: 18rem; 
             }
         }
     }

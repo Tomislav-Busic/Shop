@@ -1,6 +1,6 @@
 let sectionProduct = document.getElementById('section_product_id');
 let productSection = document.querySelector('.product-section');
-
+let imagesAll = undefined;
 
 
 
@@ -33,10 +33,42 @@ set this template in the product section*/
 
     sectionProduct.innerHTML = template_item;
 
+    //Backgound for the product
     productSection.style.background = `url(${item['category']['image']}) no-repeat`;
     productSection.style.backgroundPosition  = 'center';
     productSection.style.backgroundSize  = '100% 100%';
+
+    let images = item?.images;
+    
+    //Get all images form the api url
+    images?.forEach(img => {
+      images_place_id.innerHTML += `<img src="${img}" />`
+    })
+
+
 } 
+
+//Function for change the text less or more
+const readMore = (btn) => {
+  let parentEl = btn.closest('.description');
+  let textLess = parentEl.querySelector('.show');
+  let textMore = parentEl.querySelector('.hide');
+
+  if(btn.innerText === 'READ MORE'){
+    textLess.style.display = 'none';
+    textMore.style.display = 'block';
+    btn.innerText = 'READ LESS';
+  } else {
+    textMore.style.display = 'none';
+    textLess.style.display = 'block';
+    btn.innerText = 'READ MORE';
+  }
+}
+
+//Back to the home page
+const closeDetails = () => {
+  window.location.href = 'index.html#products_section';
+}
 
 //initalization
 fetchProduct();

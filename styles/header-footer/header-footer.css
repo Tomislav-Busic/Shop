@@ -31,7 +31,7 @@ header .menu .menu-ul li a {
   padding: 0 3rem;
   text-decoration: none;
   color: #333;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-family: "Bebas Neue", cursive;
   font-weight: bolder;
   transition: 0.3s ease-in-out;
@@ -65,7 +65,7 @@ header .menu .menu-ul li ul li a {
   padding: 0 1rem;
   text-decoration: none;
   color: #333;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-family: "Bebas Neue", cursive;
   font-weight: bolder;
   transition: 0.3s ease-in-out;
