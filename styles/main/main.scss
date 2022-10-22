@@ -42,7 +42,6 @@ main {
                         margin: 0 1rem;
 
                         a{
-                            color: var.$myColor;
                             letter-spacing: 0.1rem;
                         }
                     }
@@ -57,11 +56,7 @@ main {
     } 
 }
 
-.active-title{
-    color: var.$myColor;
-                            letter-spacing: 0.1rem;
 
-}
 
 @media (max-width: 1200px){
     main {

@@ -1,0 +1,97 @@
+@use '../variables/variables.scss' as var;
+
+.product-section{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    
+
+    .details{
+        top: 0;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        
+        @include var.center-column;
+        background-color: rgb(250, 235, 215, 0.7);
+        
+
+       .close-details{
+            position: fixed;
+            top: 4rem;
+            left: 2rem;
+            @include var.button;
+        }
+
+        h1, h2, h3{
+            padding: 1rem;
+            text-align: center;
+        }
+
+        h2{
+            color: var.$myColor;
+        }
+
+        .images{
+            margin: 0;
+            padding: 0;
+            width: 50rem;
+
+            img{
+                width: 100%;
+            }
+        }
+
+        .description{
+            @include var.center-column;
+            
+            div{
+                margin: 0;
+                padding: 0 2rem;
+                max-width: 50rem;
+
+                p{
+                    font-size: var.$pFontSize;
+                    text-align: center;
+                }
+            }
+
+            button{
+                @include var.button;
+                padding: 2rem 0 7rem 0;
+            }
+        }
+
+
+    }
+
+
+
+}
+
+@media (max-width: '950px'){
+    .product-section{
+        .details{
+            .close-details{
+                top: 1rem;
+            }
+            
+            .images{
+                width: 35rem;
+                height: 25rem; 
+            }
+        }
+    }
+}
+
+@media (max-width: '650px'){
+    .product-section{
+        .details{
+            .images{
+                width: 22rem;
+                height: 28rem; 
+            }
+        }
+    }
+}

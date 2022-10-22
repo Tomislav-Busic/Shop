@@ -5,7 +5,6 @@ let dropdownCategory = document.getElementById('dropdown_id');
 let categorySection = document.getElementById('categories_id');
 let productSection = document.getElementById('products_id');
 let headingProductsMenu = document.getElementById('chose_heading_id');
-/* let headingMenuText = undefined; */
 let changeHeadingProducts = document.querySelector('.heading-products');
 let searchInput = document.getElementById('search_id');
 let selectOption = document.getElementById('options_id');
@@ -34,7 +33,7 @@ window.addEventListener('scroll', () => {
     menuItem.style.right = '-15rem';
 });
 
-//Get the data for the category and products form the Api.js
+//Get the data for the category and products form the class Api.js
 async function getAllApis() {
     let getApiSource = new Api();
 
@@ -50,15 +49,6 @@ async function getAllApis() {
     
 }
 
-/* const displayFullCategory = (categories) => {
-    let filterEmptyCategory = categories.forEach(category => 
-        allCategoryArray.filter(item => 
-            item.category.name === category.name));
-    
-    console.log(filterEmptyCategory);
-    displayCategory(filterEmptyCategory);
-} */
-
 
 /* Chose the Category with the dropdown link.
    Then change the Category heading text with chosen link and
@@ -66,31 +56,49 @@ async function getAllApis() {
    Then filter the Products by the chosen Category */
 const choseCategory = (e) => {
     let itemChild = e.querySelector('a');
-    let itemText = itemChild.innerText;
-    changeHeadingProducts.innerText = itemText;
-  /*   modal.style.display = 'none'; */
-
-    let filterItem = allproductsArray.filter(item => 
-        item.category.name === itemText);
-        displayProducts(filterItem);
+    choseAndFilterCategory(itemChild);
+    changeHeadingColor();
 };
+
 
 /* Chose the Category with onclick the image.
    Then change the Category heading with chosen image.
    Then filter the Products by chosen Category */
 const choseCategoryByImage = (e) => {
     let itemChild = e.querySelector('h1');
+    choseAndFilterCategory(itemChild);
+    changeHeadingColor();
+}
+
+const choseAndFilterCategory = (itemChild) => {
+    
     let itemText = itemChild.innerText;
     changeHeadingProducts.innerText = itemText;
 
     let filterItem = allproductsArray.filter(item => 
         item.category.name === itemText);
-        displayProducts(filterItem);
+    displayProducts(filterItem);
 }
 
-//Display 'All Products' on the heading in the products section.
-const showAllHeading = () => {
-    displayProducts(allproductsArray)
+const changeHeadingColor = () => {
+    let text = headingProductsMenu.querySelectorAll('li');
+    text.forEach(item => {
+        let eachHeading = item.querySelector('a');
+        
+        if(eachHeading.innerText !== changeHeadingProducts.innerText){
+            eachHeading.style.color = '#333';
+        } else {
+            eachHeading.style.color = 'crimson';
+        }
+    });
+}
+
+/*Display 'All Products' on the heading in the products section and
+  change the heading name with this element name*/
+const showAllHeading = (liName) => {
+    displayProducts(allproductsArray);
+    let thisText = liName.innerText;
+    changeHeadingProducts.innerText = thisText;
 }
 
 //Search by the name for all Categories or for the each diferent Category.
@@ -133,6 +141,7 @@ selectOption.addEventListener('change', (e) => {
         case 'all':
             displayProducts(allproductsArray);
             changeHeadingProducts.innerText = 'All Products';
+            changeHeadingColor();
             break;
 
         case 'lower_price':
@@ -205,14 +214,7 @@ const displayCategory = async (data) => {
 
     categorySection.innerHTML = showData;
     dropdownCategory.innerHTML = showDropdown;
-    headingProductsMenu.innerHTML += showDropdown;
-
-    /* headingMenuText = headingProductsMenu.querySelectorAll('li a');
-    headingMenuText.forEach(item => {
-        if(changeHeadingProducts.innerText === item.innerText){
-            item.classList.add('active-title');
-        }
-    }) */
+    headingProductsMenu.innerHTML += showDropdown; 
 }
 
 /* Replace the data in the template products and
@@ -234,14 +236,18 @@ const displayProducts = async (data) => {
 
 }
 
+/*After user onclick this button get the data-id 
+  of this element from the parent element and send 
+  this id to localStorage.setItem*/
 const openDetails = (btn) => {
-    let idModal = btn.parentElement.parentElement.parentElement.getAttribute('data-id');
-    idModal = parseInt(idModal);
+    let thisProductId = btn.parentElement.parentElement.parentElement.getAttribute('data-id');
+    thisProductId = parseInt(thisProductId);
 
-    localStorage.setItem('id-modal', idModal);
-    console.log(idModal)
+    localStorage.setItem('id-modal', thisProductId);
+    console.log(thisProductId)
     window.location.href = 'product.html';
 }
+
 
 //initalization
 getAllApis();

@@ -48,7 +48,6 @@ main section .heading-products-categ ul li:hover {
   margin: 0 1rem;
 }
 main section .heading-products-categ ul li:hover a {
-  color: crimson;
   letter-spacing: 0.1rem;
 }
 main section .heading-products-categ ul li a {
@@ -59,11 +58,6 @@ main section .heading-products-categ ul li a {
   font-weight: bolder;
   transition: 0.3s ease-in-out;
   position: relative;
-}
-
-.active-title {
-  color: crimson;
-  letter-spacing: 0.1rem;
 }
 
 @media (max-width: 1200px) {

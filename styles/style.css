@@ -219,7 +219,6 @@ main section .heading-products-categ ul li:hover {
   margin: 0 1rem;
 }
 main section .heading-products-categ ul li:hover a {
-  color: crimson;
   letter-spacing: 0.1rem;
 }
 main section .heading-products-categ ul li a {
@@ -230,11 +229,6 @@ main section .heading-products-categ ul li a {
   font-weight: bolder;
   transition: 0.3s ease-in-out;
   position: relative;
-}
-
-.active-title {
-  color: crimson;
-  letter-spacing: 0.1rem;
 }
 
 @media (max-width: 1200px) {
@@ -383,32 +377,98 @@ main section .heading-products-categ ul li a {
   color: crimson;
 }
 
-.modal {
-  display: none;
-  position: fixed;
+.product-section {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+.product-section .details {
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   padding: 0;
   margin: 0;
   width: 100%;
-  background-color: antiquewhite;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(250, 235, 215, 0.7);
 }
-.modal .details {
-  position: absolute;
-  padding: 5rem 1rem;
+.product-section .details .close-details {
+  position: fixed;
+  top: 4rem;
+  left: 2rem;
+  background: none;
+  color: #333;
+  border: none;
+  font-weight: bolder;
+  font-size: 1.3rem;
+  font-family: "Bebas Neue", cursive;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+.product-section .details .close-details:hover {
+  transform: scale(1.2);
+  color: crimson;
+}
+.product-section .details h1, .product-section .details h2, .product-section .details h3 {
+  padding: 1rem;
+  text-align: center;
+}
+.product-section .details h2 {
+  color: crimson;
+}
+.product-section .details .images {
   margin: 0;
+  padding: 0;
+  width: 50rem;
+}
+.product-section .details .images img {
   width: 100%;
-  min-height: 100vh;
+}
+.product-section .details .description {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.modal .details button {
-  position: fixed;
-  top: 4rem;
-  right: 2rem;
+.product-section .details .description div {
+  margin: 0;
+  padding: 0 2rem;
+  max-width: 50rem;
+}
+.product-section .details .description div p {
+  font-size: 1.3rem;
+  text-align: center;
+}
+.product-section .details .description button {
+  background: none;
+  color: #333;
+  border: none;
+  font-weight: bolder;
+  font-size: 1.3rem;
+  font-family: "Bebas Neue", cursive;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  padding: 2rem 0 7rem 0;
+}
+.product-section .details .description button:hover {
+  transform: scale(1.2);
+  color: crimson;
+}
+
+@media (max-width: 950px) {
+  .product-section .details .close-details {
+    top: 1rem;
+  }
+  .product-section .details .images {
+    width: 35rem;
+    height: 25rem;
+  }
+}
+@media (max-width: 650px) {
+  .product-section .details .images {
+    width: 22rem;
+    height: 28rem;
+  }
 }/*# sourceMappingURL=style.css.map */
