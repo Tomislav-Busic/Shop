@@ -54,6 +54,15 @@ main {
             }
         }
     } 
+
+    .cart{
+        position: fixed;
+        left: -15rem;
+        top: 4rem;
+        width: 15rem;
+        background-color: var.$whiteAnt;
+        transition: 1s ease-in-out;
+    }
 }
 
 

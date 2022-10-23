@@ -11,5 +11,15 @@
 
     select{
         @include var.filtering;
+
+        option{
+            font-weight: bold;
+
+            &:hover{
+                color: var.$myColor;
+                background: none;
+                cursor: pointer;
+            }
+        }
     }
 }

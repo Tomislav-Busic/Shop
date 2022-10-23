@@ -5,13 +5,13 @@
     margin: 1rem;
     width: 20rem;
     height: 15rem;
-    cursor: pointer;
-    overflow: hidden; 
     
 
-    img{
+    .large-img{
         width: 100%;
-        border-radius: 0.5rem;  
+        height: 100%;
+        border-radius: 0.5rem; 
+        box-shadow: var.$boxShadow;
     }
 
     .card-description{
@@ -35,6 +35,27 @@
 
             h1{
                 letter-spacing: normal;
+            }
+
+            .images{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 7rem;
+                height: 2rem;
+
+                img{
+                    height: 2rem;
+                    width: 2rem;
+                    border: 0.5px solid var.$textColor;
+                    cursor: pointer;
+                    transition: 0.5s ease-in-out;
+
+                    &:hover{
+                        border: 2px solid var.$myColor;
+                        transform: scale(2.0);
+                    }
+                }
             }
 
             button{

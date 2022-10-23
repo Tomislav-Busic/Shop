@@ -1,16 +1,14 @@
-/*COLORS*/
-/*FONTS*/
 .card-product {
   position: relative;
   margin: 1rem;
   width: 20rem;
   height: 15rem;
-  cursor: pointer;
-  overflow: hidden;
 }
-.card-product img {
+.card-product .large-img {
   width: 100%;
+  height: 100%;
   border-radius: 0.5rem;
+  box-shadow: 0.4rem 0.7rem 0.2rem rgba(51, 51, 51, 0.8);
 }
 .card-product .card-description {
   position: absolute;
@@ -32,6 +30,24 @@
 }
 .card-product .card-description .card-des-price-btn h1 {
   letter-spacing: normal;
+}
+.card-product .card-description .card-des-price-btn .images {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 7rem;
+  height: 2rem;
+}
+.card-product .card-description .card-des-price-btn .images img {
+  height: 2rem;
+  width: 2rem;
+  border: 0.5px solid #333;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+.card-product .card-description .card-des-price-btn .images img:hover {
+  border: 2px solid crimson;
+  transform: scale(2);
 }
 .card-product .card-description .card-des-price-btn button {
   margin: 0 0.5rem;

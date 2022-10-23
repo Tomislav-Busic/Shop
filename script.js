@@ -1,5 +1,7 @@
 let menuBtn = document.getElementById('menu_btn');
 let menuItem = document.querySelector('.menu .menu-ul');
+let cartOpen = document.getElementById('cart_open_id');
+let cart = document.getElementById('cart_id');
 
 let dropdownCategory = document.getElementById('dropdown_id');
 let categorySection = document.getElementById('categories_id');
@@ -27,11 +29,24 @@ menuBtn.addEventListener("click", (e) => {
     }
 });
 
-//Menu close when scrolling
+//Close the menu and cart when user scrolling
 window.addEventListener('scroll', () => {
     menuBtn.innerText = 'MENU';
     menuItem.style.right = '-15rem';
+    cart.style.left = '-15rem';
+    cartOpen.innerText = 'Cart';
 });
+
+//Cart open and close
+cartOpen.addEventListener('click', () => {
+    if(cartOpen.innerText === 'Cart'){
+        cart.style.left = '0';
+        cartOpen.innerText = 'Close';
+    } else {
+        cart.style.left = '-15rem';
+        cartOpen.innerText = 'Cart';
+    }
+})
 
 //Get the data for the category and products form the class Api.js
 async function getAllApis() {
@@ -49,6 +64,56 @@ async function getAllApis() {
     
 }
 
+/* Replace the data in the category and dropdown template.
+   Then set this templates category section and
+   menu dropdown in corresponding place. 
+   + set the heading choices in the Products section*/
+   const displayCategory = async (data) => {
+    let showData = data?.map((item) => {
+
+        template_category = category_template_id.innerHTML;
+
+        template_category = template_category.replaceAll('${image}', item['image']);
+        template_category = template_category.replaceAll('${name}', item['name']);
+
+        return template_category;
+
+    }).join('');
+    
+    let showDropdown =  await data?.map((item) => {
+
+        template_dropdown = template_dropdown_id.innerHTML;
+
+        template_dropdown = template_dropdown.replaceAll('${name}', item['name']);
+
+        return template_dropdown;
+    }).join('');
+
+    categorySection.innerHTML = showData;
+    dropdownCategory.innerHTML = showDropdown;
+    headingProductsMenu.innerHTML += showDropdown; 
+}
+
+/* Replace the data in the template products and
+   set this template in the product section */
+   const displayProducts = async (data) => {
+    let showData = data?.map((item) => {
+        template_product = products_template_id.innerHTML;
+
+        template_product = template_product.replaceAll('${id}', item['id']);
+        template_product = template_product.replaceAll('${image}', item['images'][0] === itemCategory(item) ? item['category']['image'] : item['images'][0]);
+        template_product = template_product.replaceAll('${image1}', item['images'][0] === itemCategory(item) ? item['category']['image'] : item['images'][0]);
+        template_product = template_product.replaceAll('${image2}', item['images'][1] === itemCategory(item) ? item['category']['image'] : item['images'][1]);
+        template_product = template_product.replaceAll('${image3}', item['images'][2] === itemCategory(item) ? item['category']['image'] : item['images'][2]);
+        template_product = template_product.replaceAll('${name}', item['title']);
+        template_product = template_product.replaceAll('${price}', item['price']);
+
+        return template_product;
+        
+    }).join('');
+
+    productSection.innerHTML = showData;  
+}
 
 /* Chose the Category with the dropdown link.
    Then change the Category heading text with chosen link and
@@ -166,8 +231,6 @@ selectOption.addEventListener('change', (e) => {
     }
 });
 
-
-
 //Replace the wrong property of the images with the category image
 //Stlill looking for the better solution :)
 const itemCategory = (item) => {
@@ -186,54 +249,12 @@ const itemCategory = (item) => {
 
     return item;
 }
-     
-/* Replace the data in the category and dropdown template.
-   Then set this templates category section and
-   menu dropdown in corresponding place. 
-   + set the heading choices in the Products section*/
-const displayCategory = async (data) => {
-    let showData = data?.map((item) => {
 
-        template_category = category_template_id.innerHTML;
-
-        template_category = template_category.replaceAll('${image}', item['image']);
-        template_category = template_category.replaceAll('${name}', item['name']);
-
-        return template_category;
-
-    }).join('');
-    
-    let showDropdown =  await data?.map((item) => {
-
-        template_dropdown = template_dropdown_id.innerHTML;
-
-        template_dropdown = template_dropdown.replaceAll('${name}', item['name']);
-
-        return template_dropdown;
-    }).join('');
-
-    categorySection.innerHTML = showData;
-    dropdownCategory.innerHTML = showDropdown;
-    headingProductsMenu.innerHTML += showDropdown; 
-}
-
-/* Replace the data in the template products and
-   set this template in the product section */
-const displayProducts = async (data) => {
-    let showData = data?.map((item) => {
-        template_product = products_template_id.innerHTML;
-
-        template_product = template_product.replaceAll('${id}', item['id']);
-        template_product = template_product.replaceAll('${image}', item['images'][0] === itemCategory(item) ? item['category']['image'] : item['images'][0]);
-        template_product = template_product.replaceAll('${name}', item['title']);
-        template_product = template_product.replaceAll('${price}', item['price']);
-
-        return template_product;
-        
-    }).join('');
-
-    productSection.innerHTML = showData;
-
+const smollIcon = (img) => {
+    let thisHref = img.getAttribute('src');
+    let parentOfImg = img.closest('.card-product');
+    let currentImg = parentOfImg.querySelector('.large-img');
+    currentImg.src = thisHref;
 }
 
 /*After user onclick this button get the data-id 
@@ -247,7 +268,6 @@ const openDetails = (btn) => {
     console.log(thisProductId)
     window.location.href = 'product.html';
 }
-
 
 //initalization
 getAllApis();

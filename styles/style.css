@@ -1,5 +1,3 @@
-/*COLORS*/
-/*FONTS*/
 * {
   margin: 0;
   padding: 0;
@@ -230,6 +228,14 @@ main section .heading-products-categ ul li a {
   transition: 0.3s ease-in-out;
   position: relative;
 }
+main .cart {
+  position: fixed;
+  left: -15rem;
+  top: 4rem;
+  width: 15rem;
+  background-color: antiquewhite;
+  transition: 1s ease-in-out;
+}
 
 @media (max-width: 1200px) {
   main {
@@ -272,6 +278,7 @@ main section .heading-products-categ ul li a {
   height: 100%;
   border-radius: 0.5rem;
   transition: 2s ease-in-out;
+  box-shadow: 0.4rem 0.7rem 0.2rem rgba(51, 51, 51, 0.8);
 }
 .card-category h1 {
   position: absolute;
@@ -313,6 +320,7 @@ main section .heading-products-categ ul li a {
   background-color: antiquewhite;
   color: #333;
   font-size: 1.2rem;
+  font-weight: bolder;
   cursor: pointer;
   border: 2px solid #333;
   border-radius: 0.3rem;
@@ -323,9 +331,18 @@ main section .heading-products-categ ul li a {
   background-color: antiquewhite;
   color: #333;
   font-size: 1.2rem;
+  font-weight: bolder;
   cursor: pointer;
   border: 2px solid #333;
   border-radius: 0.3rem;
+}
+.filtering select option {
+  font-weight: bold;
+}
+.filtering select option:hover {
+  color: crimson;
+  background: none;
+  cursor: pointer;
 }
 
 .card-product {
@@ -333,12 +350,12 @@ main section .heading-products-categ ul li a {
   margin: 1rem;
   width: 20rem;
   height: 15rem;
-  cursor: pointer;
-  overflow: hidden;
 }
-.card-product img {
+.card-product .large-img {
   width: 100%;
+  height: 100%;
   border-radius: 0.5rem;
+  box-shadow: 0.4rem 0.7rem 0.2rem rgba(51, 51, 51, 0.8);
 }
 .card-product .card-description {
   position: absolute;
@@ -360,6 +377,24 @@ main section .heading-products-categ ul li a {
 }
 .card-product .card-description .card-des-price-btn h1 {
   letter-spacing: normal;
+}
+.card-product .card-description .card-des-price-btn .images {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 7rem;
+  height: 2rem;
+}
+.card-product .card-description .card-des-price-btn .images img {
+  height: 2rem;
+  width: 2rem;
+  border: 0.5px solid #333;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+.card-product .card-description .card-des-price-btn .images img:hover {
+  border: 2px solid crimson;
+  transform: scale(2);
 }
 .card-product .card-description .card-des-price-btn button {
   margin: 0 0.5rem;
@@ -394,23 +429,6 @@ main section .heading-products-categ ul li a {
   justify-content: center;
   background-color: rgba(250, 235, 215, 0.7);
 }
-.product-section .details .close-details {
-  position: fixed;
-  top: 4rem;
-  left: 2rem;
-  background: none;
-  color: #333;
-  border: none;
-  font-weight: bolder;
-  font-size: 1.3rem;
-  font-family: "Bebas Neue", cursive;
-  cursor: pointer;
-  transition: 0.5s ease-in-out;
-}
-.product-section .details .close-details:hover {
-  transform: scale(1.2);
-  color: crimson;
-}
 .product-section .details h1, .product-section .details h2, .product-section .details h3 {
   text-align: center;
   letter-spacing: 0.1rem;
@@ -442,6 +460,8 @@ main section .heading-products-categ ul li a {
   display: none;
   width: 100%;
   height: 100%;
+  border-radius: 1rem;
+  box-shadow: 0.4rem 0.7rem 0.2rem rgba(51, 51, 51, 0.8);
 }
 .product-section .details .images .images-place img:first-child {
   display: block;
@@ -455,6 +475,11 @@ main section .heading-products-categ ul li a {
   font-weight: bolder;
   padding: 1rem;
   color: crimson;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.product-section .details .images button:hover {
+  transform: scale(1.8);
 }
 .product-section .details .images button.right {
   right: 0;
@@ -464,6 +489,7 @@ main section .heading-products-categ ul li a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 2rem;
 }
 .product-section .details .description div {
   margin: 0;
@@ -487,9 +513,26 @@ main section .heading-products-categ ul li a {
   font-family: "Bebas Neue", cursive;
   cursor: pointer;
   transition: 0.5s ease-in-out;
-  padding: 2rem 0 7rem 0;
+  padding: 0 0 7rem 0;
 }
 .product-section .details .description button:hover {
+  transform: scale(1.2);
+  color: crimson;
+}
+.product-section .details .close-details {
+  position: fixed;
+  top: 4rem;
+  left: 2rem;
+  background: none;
+  color: #333;
+  border: none;
+  font-weight: bolder;
+  font-size: 1.3rem;
+  font-family: "Bebas Neue", cursive;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+.product-section .details .close-details:hover {
   transform: scale(1.2);
   color: crimson;
 }

@@ -14,6 +14,7 @@
     <header>
         <h1>Shop</h1>
 
+        <!-- menu -->
         <div class="menu">
             <ul class="menu-ul">
                 <li><a href="/">Home</a></li>
@@ -23,7 +24,7 @@
                         
                     </ul>
                 </li>
-                <li><a href="#news">News</a></li>
+                <li><a id="cart_open_id" href="#cart">Cart</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -42,11 +43,11 @@
 
         <!-- section products -->
         <section id="products_section">
-
             <br><br>
 
             <h1 class="heading-products">All Products</h1>
 
+            <!-- input and select -->
             <div class="filtering">
                 <input id="search_id" type="text" placeholder="Search by Name">
 
@@ -58,23 +59,28 @@
                 </select>
             </div>
 
+            <!-- place for the category heading template -->
             <div class="heading-products-categ">
-
                 <ul id="chose_heading_id"></ul>
-
             </div>
 
             <br><br>
 
+            <!-- place for the products template -->
             <div class="products" id="products_id"></div>
             
         </section>
 
-        <section id="news"></section>
+        <!-- cart -->
+        <div class="cart" id="cart_id">
+            <h1>Product</h1>
+            <h2>Price</h2>
+        </div>
 
         <section id="contact"></section>
 
     </main>
+
 
     <!-- footer -->
     <footer>
@@ -99,10 +105,15 @@
     <template id="products_template_id">
 
         <a class="card-product" data-id="${id}" id="card">
-            <img src="${image}" alt="${name}">
+            <img class="large-img" src="${image}" alt="${name}">
             <div class="card-description">
                 <h2>${name}</h2>
                 <div class="card-des-price-btn">
+                    <div class="images">
+                        <img onclick="smollIcon(this)" src="${image1}" alt="${name}">
+                        <img onclick="smollIcon(this)" src="${image2}" alt="${name}">
+                        <img onclick="smollIcon(this)" src="${image3}" alt="${name}">
+                    </div>
                     <h1>$ ${price}</h1>
                     <button onclick="openDetails(this)">See More</button>
                 </div>

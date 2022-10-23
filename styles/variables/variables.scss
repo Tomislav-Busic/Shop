@@ -1,13 +1,15 @@
 
-/*COLORS*/
+
 $myColor: crimson;  
 $textColor: #333;
 $whiteAnt: antiquewhite;
 
-/*FONTS*/
+
 $pFontSize: 1.2rem;
 $fontHeaders: 'Bebas Neue', cursive;
 $fontText: 'DM Sans', sans-serif;
+
+$boxShadow: 0.4rem 0.7rem 0.2rem rgba($color: $textColor, $alpha: 0.8);
 
 @mixin center{
     display: flex;
@@ -35,6 +37,7 @@ $fontText: 'DM Sans', sans-serif;
     background-color: $whiteAnt;
     color: $textColor;
     font-size: 1.2rem;
+    font-weight: bolder;
     cursor: pointer;
     border: 2px solid $textColor;
     border-radius: 0.3rem;
