@@ -101,6 +101,28 @@ const hideImages = () => {
     img.style.display = 'none');
 }
 
+const toCart = (btn) => {
+  let myElement = btn.closest('.add-cart');
+  let name = myElement.querySelector('.quantity .name').innerText;
+  let price = myElement.querySelector('.quantity .price').innerText;
+  let quantity = myElement.querySelector('.quantity input').value;
+  let totalText = myElement.querySelector('.total');
+  
+  if(parseInt(quantity) > 0){
+    quantity = parseInt(quantity);
+    price = price.substring(1);
+    price = parseInt(price);
+
+    total = price * quantity;
+    totalText.innerText = `Total: $${total}`;
+
+    btn.innerText = 'ADDED';
+    btn.setAttribute('disabled', 'true');
+
+  } else {
+    totalText.innerText = 'Please insert the quantity :)';
+  }
+}
 
 
 //initalization

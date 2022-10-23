@@ -484,12 +484,49 @@ main .cart {
 .product-section .details .images button.right {
   right: 0;
 }
+.product-section .details .add-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30rem;
+  padding: 1rem;
+}
+.product-section .details .add-cart h3 {
+  color: #333;
+  padding: 0;
+}
+.product-section .details .add-cart .quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+}
+.product-section .details .add-cart .quantity input {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  border: 0.1rem solid #333;
+  border-radius: 0.1rem;
+  padding: 0 0.3rem;
+  font-weight: bolder;
+  color: #333;
+}
+.product-section .details .add-cart button {
+  background-color: crimson;
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  font-weight: bolder;
+  margin-top: 0.5rem;
+  font-family: "Bebas Neue", cursive;
+}
 .product-section .details .description {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 2rem;
 }
 .product-section .details .description div {
   margin: 0;
@@ -513,7 +550,7 @@ main .cart {
   font-family: "Bebas Neue", cursive;
   cursor: pointer;
   transition: 0.5s ease-in-out;
-  padding: 0 0 7rem 0;
+  padding: 0 0 3rem 0;
 }
 .product-section .details .description button:hover {
   transform: scale(1.2);
@@ -551,5 +588,6 @@ main .cart {
   .product-section .details .images {
     width: 22rem;
     height: 18rem;
+    margin: 0;
   }
 }/*# sourceMappingURL=style.css.map */

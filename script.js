@@ -33,20 +33,7 @@ menuBtn.addEventListener("click", (e) => {
 window.addEventListener('scroll', () => {
     menuBtn.innerText = 'MENU';
     menuItem.style.right = '-15rem';
-    cart.style.left = '-15rem';
-    cartOpen.innerText = 'Cart';
 });
-
-//Cart open and close
-cartOpen.addEventListener('click', () => {
-    if(cartOpen.innerText === 'Cart'){
-        cart.style.left = '0';
-        cartOpen.innerText = 'Close';
-    } else {
-        cart.style.left = '-15rem';
-        cartOpen.innerText = 'Cart';
-    }
-})
 
 //Get the data for the category and products form the class Api.js
 async function getAllApis() {
