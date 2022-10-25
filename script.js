@@ -78,7 +78,7 @@ async function getAllApis() {
 
     categorySection.innerHTML = showData;
     dropdownCategory.innerHTML = showDropdown;
-    headingProductsMenu.innerHTML += showDropdown; 
+    headingProductsMenu.innerHTML = showDropdown; 
 }
 
 /* Replace the data in the template products and
@@ -88,10 +88,10 @@ async function getAllApis() {
         template_product = products_template_id.innerHTML;
 
         template_product = template_product.replaceAll('${id}', item['id']);
-        template_product = template_product.replaceAll('${image}', item['images'][0] === itemCategory(item) ? item['category']['image'] : item['images'][0]);
-        template_product = template_product.replaceAll('${image1}', item['images'][0] === itemCategory(item) ? item['category']['image'] : item['images'][0]);
-        template_product = template_product.replaceAll('${image2}', item['images'][1] === itemCategory(item) ? item['category']['image'] : item['images'][1]);
-        template_product = template_product.replaceAll('${image3}', item['images'][2] === itemCategory(item) ? item['category']['image'] : item['images'][2]);
+        template_product = template_product.replaceAll('${image}', item['images'][0] ? item['images'][0] : item['category']['image']);
+        template_product = template_product.replaceAll('${image1}', item['images'][0] ? item['images'][0] : item['category']['image']);
+        template_product = template_product.replaceAll('${image2}', item['images'][1] ? item['images'][1] : item['category']['image']);
+        template_product = template_product.replaceAll('${image3}', item['images'][2] ? item['images'][2] : item['category']['image']);
         template_product = template_product.replaceAll('${name}', item['title']);
         template_product = template_product.replaceAll('${price}', item['price']);
 
@@ -218,25 +218,7 @@ selectOption.addEventListener('change', (e) => {
     }
 });
 
-//Replace the wrong property of the images with the category image
-//Stlill looking for the better solution :)
-const itemCategory = (item) => {
-    let imageUrl = item.images[0];
-
-    switch (imageUrl){
-        case '':
-        case 'string':
-        case 'https://www.cike.ws':
-        case 'https://www.cojef.tv':
-        case 'https://www.mugoqifokyf.co.uk':
-        case 'https://paceimg.com/640/480/any':
-            item = imageUrl;
-            break;
-    }
-
-    return item;
-}
-
+//Change the smoll icon on the product card to the background image of this card
 const smollIcon = (img) => {
     let thisHref = img.getAttribute('src');
     let parentOfImg = img.closest('.card-product');

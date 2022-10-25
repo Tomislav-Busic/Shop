@@ -228,14 +228,6 @@ main section .heading-products-categ ul li a {
   transition: 0.3s ease-in-out;
   position: relative;
 }
-main .cart {
-  position: fixed;
-  left: -15rem;
-  top: 4rem;
-  width: 15rem;
-  background-color: antiquewhite;
-  transition: 1s ease-in-out;
-}
 
 @media (max-width: 1200px) {
   main {
@@ -503,8 +495,8 @@ main .cart {
   width: 60%;
 }
 .product-section .details .add-cart .quantity input {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 3rem;
+  height: 2rem;
   font-size: 1rem;
   border: 0.1rem solid #333;
   border-radius: 0.1rem;
