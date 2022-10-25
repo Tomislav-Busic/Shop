@@ -28,7 +28,8 @@
   justify-content: space-between;
   flex-direction: row;
 }
-.card-product .card-description .card-des-price-btn h1 {
+.card-product .card-description .card-des-price-btn h2 {
+  color: crimson;
   letter-spacing: normal;
 }
 .card-product .card-description .card-des-price-btn .images {
@@ -39,7 +40,7 @@
   height: 2rem;
 }
 .card-product .card-description .card-des-price-btn .images img {
-  height: 2rem;
+  height: 1.8rem;
   width: 2rem;
   border: 0.5px solid #333;
   cursor: pointer;

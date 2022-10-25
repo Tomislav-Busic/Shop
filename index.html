@@ -17,7 +17,7 @@
         <!-- menu -->
         <div class="menu">
             <ul class="menu-ul">
-                <li><a href="/">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li>
                     <a href="#products_section">Categories &#9662</a>
                     <ul class="dropdown-text" id="dropdown_id">
@@ -33,7 +33,7 @@
     </header>
 
     <!-- main -->
-    <main>
+    <main id="home">
 
         <!-- section categories -->
         <section>
@@ -84,12 +84,12 @@
 
     <!-- template categories -->
     <template id="category_template_id">
-
+   
         <a href="#products_section" class="card-category" onclick="choseCategoryByImage(this)">
             <img src="${image}" alt="${name}">
             <h1>${name}</h1>
         </a>
-
+        
     </template>
 
     <!-- template products -->
@@ -105,7 +105,7 @@
                         <img onclick="smollIcon(this)" src="${image2}" alt="">
                         <img onclick="smollIcon(this)" src="${image3}" alt="">
                     </div>
-                    <h1>$ ${price}</h1>
+                    <h2>$ ${price}</h2>
                     <button onclick="openDetails(this)">See More</button>
                 </div>
             </div>

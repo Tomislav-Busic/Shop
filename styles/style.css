@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -293,8 +294,8 @@ main section .heading-products-categ ul li a {
 }
 @media (max-width: 700px) {
   .card-category {
-    width: 22rem;
-    height: 18rem;
+    width: 15rem;
+    height: 12rem;
     margin: 1rem 0;
     padding: 0.3rem;
   }
@@ -367,7 +368,8 @@ main section .heading-products-categ ul li a {
   justify-content: space-between;
   flex-direction: row;
 }
-.card-product .card-description .card-des-price-btn h1 {
+.card-product .card-description .card-des-price-btn h2 {
+  color: crimson;
   letter-spacing: normal;
 }
 .card-product .card-description .card-des-price-btn .images {
@@ -378,7 +380,7 @@ main section .heading-products-categ ul li a {
   height: 2rem;
 }
 .card-product .card-description .card-des-price-btn .images img {
-  height: 2rem;
+  height: 1.8rem;
   width: 2rem;
   border: 0.5px solid #333;
   cursor: pointer;
