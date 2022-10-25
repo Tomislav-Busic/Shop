@@ -43,8 +43,8 @@ async function getAllApis() {
 
     getCategory = await getApiSource.fetchCategory();
     console.log(getCategory);
-    displayCategory(getCategory);  
-
+    displayCategory(getCategory);
+    
     getProducts = await getApiSource.fetchProducts();
     allproductsArray = getProducts;
     console.log(getProducts);
@@ -90,8 +90,8 @@ async function getAllApis() {
         template_product = products_template_id.innerHTML;
 
         template_product = template_product.replaceAll('${id}', item['id']);
-        template_product = template_product.replaceAll('${image}', item['images'][0] ? item['images'][0] : item['category']['image']);
-        template_product = template_product.replaceAll('${image1}', item['images'][0] ? item['images'][0] : item['category']['image']);
+        template_product = template_product.replaceAll('${image}', item['images'][0] === itemCategory(item) ? item['category']['image'] : item['images'][0]);
+        template_product = template_product.replaceAll('${image1}', item['images'][0] === itemCategory(item) ? item['category']['image'] : item['images'][0]);
         template_product = template_product.replaceAll('${image2}', item['images'][1] ? item['images'][1] : item['category']['image']);
         template_product = template_product.replaceAll('${image3}', item['images'][2] ? item['images'][2] : item['category']['image']);
         template_product = template_product.replaceAll('${name}', item['title']);
@@ -159,7 +159,6 @@ const showAllHeading = (liName) => {
     changeHeadingProducts.innerText = thisText;
 }
 
-
 //Search by the name for all Categories or for the each diferent Category.
 searchInput.addEventListener("input", (e) => {
     let value = e.target.value.toLowerCase();
@@ -208,23 +207,44 @@ selectOption.addEventListener('change', (e) => {
             let sortByLowerPrice = allproductsArray.sort((a,b) => 
                 a.price - b.price);
             
-            let filterLowerCategory = sortByLowerPrice.filter(item => 
+            let sortLowerCategory = sortByLowerPrice.filter(item => 
                 item.category.name === changeHeadingProducts.innerText);
 
-                diferentOfAllProducts(filterLowerCategory);
+                diferentOfAllProducts(sortLowerCategory);
             break;
             
         case 'higher_price':
             let sortByHigherPrice = allproductsArray.sort((a,b) => 
                 b.price - a.price);
 
-            let filterHigherCategory = sortByHigherPrice.filter(item => 
+            let sortHigherCategory = sortByHigherPrice.filter(item => 
                 item.category.name === changeHeadingProducts.innerText);
 
-                diferentOfAllProducts(filterHigherCategory);
+                diferentOfAllProducts(sortHigherCategory);
             break;     
     }
 });
+
+
+//Replace the wrong property of the images with the category image
+//Stlill looking for the better solution :)
+const itemCategory = (item) => {
+    let imageUrl = item.images[0];
+
+    switch (imageUrl){
+        case '':
+        case 'string':
+        case 'https://www.cike.ws':
+        case 'null':
+        case 'https://www.cojef.tv':
+        case 'https://www.mugoqifokyf.co.uk':
+        case 'https://paceimg.com/640/480/any':
+            item = imageUrl;
+            break;
+    }
+
+    return item;
+}
 
 
 //Change the smoll icon on the product card to the background image of this card
