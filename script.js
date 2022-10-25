@@ -29,11 +29,13 @@ menuBtn.addEventListener("click", (e) => {
     }
 });
 
+
 //Close the menu and cart when user scrolling
 window.addEventListener('scroll', () => {
     menuBtn.innerText = 'MENU';
     menuItem.style.right = '-15rem';
 });
+
 
 //Get the data for the category and products form the class Api.js
 async function getAllApis() {
@@ -41,15 +43,14 @@ async function getAllApis() {
 
     getCategory = await getApiSource.fetchCategory();
     console.log(getCategory);
-    displayCategory(getCategory);
-    
+    displayCategory(getCategory);  
 
     getProducts = await getApiSource.fetchProducts();
     allproductsArray = getProducts;
     console.log(getProducts);
-    displayProducts(getProducts);
-    
+    displayProducts(getProducts);  
 }
+
 
 /* Replace the data in the category and dropdown template.
    Then set this templates category section and
@@ -81,6 +82,7 @@ async function getAllApis() {
     headingProductsMenu.innerHTML = showDropdown; 
 }
 
+
 /* Replace the data in the template products and
    set this template in the product section */
    const displayProducts = async (data) => {
@@ -102,6 +104,7 @@ async function getAllApis() {
     productSection.innerHTML = showData;  
 }
 
+
 /* Chose the Category with the dropdown link.
    Then change the Category heading text with chosen link and
    close the modal if it's open.
@@ -122,6 +125,7 @@ const choseCategoryByImage = (e) => {
     changeHeadingColor();
 }
 
+
 const choseAndFilterCategory = (itemChild) => {
     
     let itemText = itemChild.innerText;
@@ -131,6 +135,7 @@ const choseAndFilterCategory = (itemChild) => {
         item.category.name === itemText);
     displayProducts(filterItem);
 }
+
 
 const changeHeadingColor = () => {
     let text = headingProductsMenu.querySelectorAll('li');
@@ -145,6 +150,7 @@ const changeHeadingColor = () => {
     });
 }
 
+
 /*Display 'All Products' on the heading in the products section and
   change the heading name with this element name*/
 const showAllHeading = (liName) => {
@@ -152,6 +158,7 @@ const showAllHeading = (liName) => {
     let thisText = liName.innerText;
     changeHeadingProducts.innerText = thisText;
 }
+
 
 //Search by the name for all Categories or for the each diferent Category.
 searchInput.addEventListener("input", (e) => {
@@ -170,13 +177,14 @@ searchInput.addEventListener("input", (e) => {
     }
 });
 
+
 /* Filter with the options.
    After the user chose 'All Products', it will be displayed all
    but also it will be change the heading in the products section.
    If the user chose the 'lower' or 'higher' price, it will be displayed 
    for all products lower or higher price. 
    But if before the chosen option the displayed products are not 'All Products', 
-   it will be desplayed the 'lower' or 'higher' price for only type of the chosen products.  
+   it will be desplayed the 'lower' or 'higher' price for only type of the chosen category.  
     */
 selectOption.addEventListener('change', (e) => {
     let value = e.target.value;
@@ -200,23 +208,24 @@ selectOption.addEventListener('change', (e) => {
             let sortByLowerPrice = allproductsArray.sort((a,b) => 
                 a.price - b.price);
             
-            let sortLowerCategory = sortByLowerPrice.filter(item => 
+            let filterLowerCategory = sortByLowerPrice.filter(item => 
                 item.category.name === changeHeadingProducts.innerText);
 
-                diferentOfAllProducts(sortLowerCategory);
+                diferentOfAllProducts(filterLowerCategory);
             break;
             
         case 'higher_price':
             let sortByHigherPrice = allproductsArray.sort((a,b) => 
                 b.price - a.price);
 
-            let sortHigherCategory = sortByHigherPrice.filter(item => 
+            let filterHigherCategory = sortByHigherPrice.filter(item => 
                 item.category.name === changeHeadingProducts.innerText);
 
-                diferentOfAllProducts(sortHigherCategory);
+                diferentOfAllProducts(filterHigherCategory);
             break;     
     }
 });
+
 
 //Change the smoll icon on the product card to the background image of this card
 const smollIcon = (img) => {
@@ -225,6 +234,7 @@ const smollIcon = (img) => {
     let currentImg = parentOfImg.querySelector('.large-img');
     currentImg.src = thisHref;
 }
+
 
 /*After user onclick this button get the data-id 
   of this element from the parent element and send 
@@ -237,6 +247,7 @@ const openDetails = (btn) => {
     console.log(thisProductId)
     window.location.href = 'product.html';
 }
+
 
 //initalization
 getAllApis();
