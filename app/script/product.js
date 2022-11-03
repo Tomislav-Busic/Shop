@@ -68,7 +68,7 @@ const readMore = (btn) => {
 
 //Back to the home page
 const closeDetails = () => {
-  window.location.href = 'index.html#products_section';
+  window.location.href = '../index.html#products_section';
 }
 
 //Functions for the image slider
@@ -103,8 +103,7 @@ const hideImages = () => {
 
 const toCart = (btn) => {
   let myElement = btn.closest('.add-cart');
-  let name = myElement.querySelector('.quantity .name').innerText;
-  let price = myElement.querySelector('.quantity .price').innerText;
+  let price = myElement.querySelector('.price').innerText;
   let quantity = myElement.querySelector('.quantity input').value;
   let totalText = myElement.querySelector('.total');
   

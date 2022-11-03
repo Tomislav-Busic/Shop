@@ -8,7 +8,7 @@
     
 
     .details{
-        padding: 0;
+        padding: 0rem;
         margin: 0;
         width: 100%;
         min-height: 100vh;
@@ -81,46 +81,6 @@
             }
         }
 
-        .add-cart{
-            @include var.center-column;
-            width: 30rem;
-            padding: 1rem;
-
-            h3{
-                color: var.$textColor;
-                padding: 0;
-            }
-
-            .quantity{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                width: 60%;
-
-                input{
-                    width: 3rem;
-                    height: 2rem;
-                    font-size: 1rem;
-                    border: 0.1rem solid var.$textColor;
-                    border-radius: 0.1rem;
-                    padding: 0 0.3rem;
-                    font-weight: bolder;
-                    color: var.$textColor;
-                }               
-            }
-
-            button{
-                background-color: var.$myColor;
-                border: none;
-                border-radius: 0.2rem;
-                padding: 0.3rem 0.7rem;
-                cursor: pointer;
-                font-weight: bolder;
-                margin-top: 0.5rem;
-                font-family: var.$fontHeaders;
-            }
-        }
-        
         .description{
             @include var.center-column;
             
@@ -142,7 +102,48 @@
 
             button{
                 @include var.button;
-                padding: 0 0 3rem 0;
+                color: var.$myColor;
+            }
+        }
+
+        .add-cart{
+            @include var.center-column;
+            padding: 1rem 3rem;
+            margin-top: 2rem;
+            border: 0.3rem solid var.$textColor;
+            border-radius: 0.5rem;
+
+            h3{
+                color: var.$myColor;
+                padding: 0;
+            }
+
+            .quantity {
+                display: flex;
+
+                input{
+                    margin-left: 1rem;
+                    width: 3rem;
+                    font-size: 1rem;
+                    border: 0.1rem solid var.$textColor;
+                    border-radius: 0.1rem;
+                    padding: 0 0.3rem;
+                    font-weight: bolder;
+                    color: var.$textColor;
+                }
+            }               
+
+            button{
+                margin-top: 0.5rem;
+                background-color: var.$myColor;
+                border: none;
+                border-radius: 0.2rem;
+                padding: 0.3rem 0.7rem;
+                cursor: pointer;
+                font-size: var.$pFontSize;
+                font-weight: bolder;
+                font-family: var.$fontHeaders;
+                color: var.$textColor;
             }
         }
 

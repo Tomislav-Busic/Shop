@@ -265,7 +265,7 @@ const openDetails = (btn) => {
 
     localStorage.setItem('id-modal', thisProductId);
     console.log(thisProductId)
-    window.location.href = 'product.html';
+    window.location.href = 'app/product.html';
 }
 
 

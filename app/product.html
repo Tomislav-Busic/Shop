@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css" type="text/css">
+    <link rel="stylesheet" href="./styles/style.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans&display=swap" rel="stylesheet">
     <title>Product</title>
 </head>
@@ -29,21 +29,21 @@
             </div>
             <h1>${name}</h1>
             <h2>$${price}</h2>
-            <div class="add-cart">
-                <h3>Add to cart</h3>
-                <div class="quantity">
-                    <h4 class="name">${name}</h4>
-                    <h4 class="price">$${price}</h4>
-                    <h4>quantity</h4>
-                    <input type="number" name="quantity" value="0" min="0">  
-                </div>
-                <h3 class="total"></h3>
-                <button onclick="toCart(this)">Add</button>
-            </div>
             <div class="description">
                 <div class="show"><p>${descriptionShort}...</p></div>
                 <div class="hide"><p>${description}</p></div>
                 <button onclick="readMore(this)">Read more</button>
+            </div>
+            <div class="add-cart">
+                <h3>Add to cart</h3>
+                <h4 class="name">${name}</h4>
+                <h4 class="price">$${price}</h4>
+                <div class="quantity">
+                    <h4>quantity</h4>
+                    <input type="number" name="quantity" value="0" min="0">
+                </div>
+                <h3 class="total"></h3>
+                <button onclick="toCart(this)">Add</button>
             </div>
             <button class="close-details" onclick="closeDetails()">&#9668 BACK</button>
         </div>
@@ -52,7 +52,7 @@
    
     
     
-    <script src="Api.js"></script>
-    <script src="product.js"></script>
+    <script src="./script/Api.js"></script>
+    <script src="./script/product.js"></script>
 </body>
 </html>
